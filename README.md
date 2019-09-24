@@ -1,2 +1,2 @@
 # Owl-Snapshots
-Work individually to create "ABOUT ME" webpages then join pages together to create a single site using HTML/CSS.
+Work together to create a proposal document with basic layout and plan for the project "Owl SnapShots."
