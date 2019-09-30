@@ -140,10 +140,10 @@ Since Owl Snapshots contains dynamic content, the dashboard experiences constant
 
 **Roles**
 
-Grant; Scrum Master, Github Master
+Grant: Scrum Master, Github Master
 
-Kevin; Product Owner, Back-End Lead
+Kevin: Product Owner, Back-End Lead
 
-Nicole; Scrum Master, Front-End Lead
+Nicole: Scrum Master, Front-End Lead
 
 [**Checklist** status is available as a card on our Trello workspace]
