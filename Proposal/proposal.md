@@ -148,4 +148,19 @@ Nicole: Scrum Master, Front-End Lead
 
 **Checklist**
 
+* Team decided on basic means of communications
+    * DONE - Discord
+* Team found a time slot to meet outisde of the class
+    * ISSUE - Team will work online due to work schedules
+* Front and back end team leads chosen
+    * DONE - Front: Nicole, Back: Kevin
+* Github master chosen
+    * DONE - Grant
+* Team ready and able to use the chosen back and front-end frameworks
+    * ON TRACK - Team still discussing frameworks and prototyping design
+* Skills of each team member defined and known to all
+    * DONE
+* Team lead ensured that all team members read the final M1 and agree/understand it before submission
+    * DONE
+
 
