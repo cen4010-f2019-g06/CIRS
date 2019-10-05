@@ -22,7 +22,8 @@ Nicole Appleton Guerrero
 
 | Revision History | Date |
 | --- | --- |
-|   |   |
+| Added Checklist  | 10/1/2019  |
+| .   | .   |
 
 
 
