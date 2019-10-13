@@ -1,0 +1,1 @@
+No changes have been made thus far regarding any details depicted in our proposal.
