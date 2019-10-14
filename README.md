@@ -6,8 +6,8 @@ Trello (https://trello.com/cen4010group6/members)
 LAMP   (http://lamp.cse.fau.edu/~cen4010fal19_g06/)
 
 Milestones
-- [x] [M1: Setup Infrastructure Organization](aboutDev)
-- [x] [M2: Create Project Proposal](Proposal/proposal.pdf)
+- [x] [M0: Setup Infrastructure Organization](aboutDev)
+- [x] [M1: Create Project Proposal](Proposal/proposal.pdf)
 - [x] [M2: Create GUI Mockup](Proposal/mockup/webPrototype.pdf)
 - [ ] M3: Refine Project Requirements and Create Software Prototype
 - [ ] M4: Launch Beta WebApp
