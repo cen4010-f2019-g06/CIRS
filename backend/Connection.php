@@ -1,6 +1,6 @@
 <?php
 /* Connect to a MySQL database using driver invocation */
-$dsn = 'mysql:dbname=cen4010fal19_g06;host=lamp.cse.fau.edu';
+$dsn = 'mysql:host=lamp.cse.fau.edu;dbname=cen4010fal19_g06';
 $user = 'cen4010fal19_g06';
 $password = 'nKg19Fa06';
 
