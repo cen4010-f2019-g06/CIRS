@@ -75,15 +75,15 @@
         //property declaration
         public $type = "";
         public $title ="";
-        public $content ="";
+        public $description ="";
 
         //methods
         //constructor
-        function __construct($type, $title, $content)
+        function __construct($type, $title, $description)
         {
             $this->type = $type;
             $this->title = $title;
-            $this->content = $content;
+            $this->description = $description;
         }
 
 
@@ -102,15 +102,15 @@
         }
         public function getTitle()
         {
-            return $this->title;
+            return $this->title;ƒ
         }
-        public function setContent($content)
+        public function setDescription($description)
         {
-            $this->content = $content;
+            $this->description = $description;
         }
-        public function getContent()
+        public function getDescription()
         {
-            return $this->content;
+            return $this->description;
         }
     }
 
