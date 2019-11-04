@@ -8,11 +8,12 @@
 
 <?php
     include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
+
     class DBController
     {
         private $connection;
 
-        function __construct($DB_USER, $DB_PASSWORD)
+        public function __construct($DB_USER, $DB_PASSWORD)
         {
             try {
                 $this->connection = new PDO('mysql:host=localhost;dbname=cen4010-f2019-g06', $DB_USER, $DB_PASSWORD);
@@ -38,7 +39,7 @@
 
         public function queryUser($email, $password)
         {
-            //query database to check if the email/password combination exists
+            //query database to check if the email/password combination exists (login)
 
             //if exists return true
             //if not exists return false
@@ -50,9 +51,19 @@
 
         }
 
-        public function insertPost()
+        public function insertPost($post)
         {
-            //run SQL query to insert a new post into DB
+            $data = [
+                'type' => $post->getType(),
+                'title' => $post->getTitle(),
+                'description' => $post->getDescription(),
+            ];
+
+            $sql = "INSERT INTO postTest (type, title, description) 
+                    VALUES (:type, :title, :description)";
+
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($data);
         }
 
 
@@ -95,11 +106,14 @@
     }
 
 
+    $db = new DBController($DB_USER, $DB_PASSWORD);
 
-    $post = new DBController();
+    $post = new Post();
     $post->setType($_POST['type']);
     $post->setTitle($_POST['title']);
     $post->setDescription($_POST['description']);
+
+    $db->insertPost($post);
 
     $type = $_POST['type'];
     $title = $_POST['title'];
