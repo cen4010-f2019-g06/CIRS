@@ -7,7 +7,59 @@
 <body>
 
 <?php
+    include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
     class DBController
+    {
+        private $connection;
+
+        function __construct($DB_USER, $DB_PASSWORD)
+        {
+            try {
+                $this->connection = new PDO('mysql:host=localhost;dbname=cen4010-f2019-g06', $DB_USER, $DB_PASSWORD);
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            }
+        }
+
+        public function insertUser($name, $password, $email)
+        {
+            $data = [
+                'name' => $name,
+                'password' => $password,
+                'email' => $email,
+            ];
+            $sql = "INSERT INTO users (name, password, email) 
+                    VALUES (:name, :password, :email)";
+
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($data);
+        }
+
+        public function queryUser($email, $password)
+        {
+            //query database to check if the email/password combination exists
+
+            //if exists return true
+            //if not exists return false
+        }
+
+        public function getPosts()
+        {
+            //query database for all posts and store in an array of type Post[]
+
+        }
+
+        public function insertPost()
+        {
+            //run SQL query to insert a new post into DB
+        }
+
+
+
+    }
+
+    class Post
     {
         //property declaration
         public $type = "";
@@ -40,9 +92,9 @@
         {
             return $this->description;
         }
-
-
     }
+
+
 
     $post = new DBController();
     $post->setType($_POST['type']);
