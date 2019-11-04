@@ -96,7 +96,7 @@
 
 
 
-    $post = new DBController();
+    $post = new Post();
     $post->setType($_POST['type']);
     $post->setTitle($_POST['title']);
     $post->setDescription($_POST['description']);
