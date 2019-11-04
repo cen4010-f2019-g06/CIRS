@@ -78,15 +78,6 @@
         public $description ="";
 
         //methods
-        //constructor
-        function __construct($type, $title, $description)
-        {
-            $this->type = $type;
-            $this->title = $title;
-            $this->description = $description;
-        }
-
-
         //getters and setters
         public function setType($type)
         {
@@ -118,16 +109,12 @@
     $db = new DBController($DB_USER, $DB_PASSWORD);
     
     $post = new Post();
-    $post->setType($_POST['type']);
-    $post->setTitle($_POST['title']);
-    $post->setDescription($_POST['description']);
+    $post->setType("Event");
+    $post->setTitle("Party");
+    $post->setDescription("Good times.");
 
     $db->insertPost($post);
 
-    $type = $_POST['type'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    
     echo $post->getType() . '<br><br>';
     echo $post->getTitle() . '<br><br>';
     echo $post->getDescription() . '<br><br>';

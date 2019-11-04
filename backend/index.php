@@ -28,7 +28,11 @@
         <?php
             include 'input.php';
 
-            $testPost = new Post("Issue", "Test Post", "Please ignore.");
+            $testPost = new Post();
+            $testPost->setType("Issue");
+            $testPost->setTitle("Test Post");
+            $testPost->setDescription("Please Ignore.");
+
             $POSTS = array($testPost);
 
             if(count($POSTS)!=0)
