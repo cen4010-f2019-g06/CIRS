@@ -47,8 +47,19 @@
 
         public function getPosts()
         {
-            //query database for all posts and store in an array of type Post[]
+            $posts = array();
 
+            //query database for all posts and store in an array of type Post[]
+            $sql = "SELECT type, title, description FROM postTest";
+            foreach($this->connection->query($sql) as $row)
+            {
+                $post = new Post();
+                $post->setType($row['type']);
+                $post->setTitle($row['title']);
+                $post->setType($row['type']);
+                array_push($posts, $post);
+            }
+            return $posts;
         }
 
         public function insertPost($post)
@@ -65,8 +76,6 @@
             $stmt = $this->connection->prepare($sql);
             $stmt->execute($data);
         }
-
-
 
     }
 
@@ -108,12 +117,15 @@
 
     $db = new DBController($DB_USER, $DB_PASSWORD);
     
-    $post = new Post();
-    $post->setType("Event");
-    $post->setTitle("Party");
-    $post->setDescription("Good times.");
+//    $post = new Post();
+//    $post->setType("Event");
+//    $post->setTitle("Party");
+//    $post->setDescription("Good times.");
+//
+//    $db->insertPost($post);
 
-    $db->insertPost($post);
+
+    $posts = $db->getPosts();
 
     //echo $post->getType() . '<br><br>';
     //echo $post->getTitle() . '<br><br>';
