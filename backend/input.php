@@ -7,7 +7,7 @@
 <body>
 
 <?php
-    include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
+    //include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
     class DBController
     {
         private $connection;
