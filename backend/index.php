@@ -25,7 +25,49 @@
     <br>
 
     <div class="container intro">
-        <form action = "input.php" method = "POST">
+        <?php
+            include 'input.php';
+
+            $testPost = new Post("Issue", "Test Post", "Please ignore.");
+            $POSTS = array($testPost);
+
+            if(count($POSTS)!=0)
+            {
+                for($i=0;$i<count($POSTS);$i++)
+                {
+                    $output = $POSTS[$i];
+                    echo $output->getType(), "<br>", $output->getTitle(), "<br>", $output->getContent(), "<br><br>";
+                    //echo $output->getTitle(), PHP_EOL;
+                    //echo $output->getContent(), PHP_EOL;
+                }
+            }
+
+
+            if(isset($_POST['submit']))
+            {
+                $post = new Post();
+                $post->setType($_POST['type']);
+                $post->setTitle($_POST['title']);
+                $post->setContent($_POST['content']);
+        
+                $type = $_POST['type'];
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+            
+                echo $post->getType() . '<br><br>';
+                echo $post->getTitle() . '<br><br>';
+                echo $post->getContent() . '<br><br>';
+            }
+
+        ?>
+
+
+    </div>
+
+    <br>
+
+    <div class="container intro">
+        <form action = "" method = "POST">
             <table border = "0">
                 <tr>
                     <form>
@@ -39,7 +81,7 @@
                 </tr>                
                 <tr>    
                     <td>Description</td>
-                    <td><textarea name="description" rows="10" cols="30"></textarea></td>
+                    <td><textarea name="content" rows="10" cols="30"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan = "2" align ="center"><input type = "submit" value = "submit"/></td>

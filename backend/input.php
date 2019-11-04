@@ -7,15 +7,16 @@
 <body>
 
 <?php
-    //include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
+    include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
+
     class DBController
     {
         private $connection;
 
-        function __construct($DB_USER, $DB_PASSWORD)
+        public function __construct($DB_USER, $DB_PASSWORD)
         {
             try {
-                $this->connection = new PDO('mysql:host=localhost;dbname=cen4010-f2019-g06', $DB_USER, $DB_PASSWORD);
+                $this->connection = new PDO('mysql:host=localhost;dbname=cen4010fal19_g06', $DB_USER, $DB_PASSWORD);
             } catch (PDOException $e) {
                 print "Error!: " . $e->getMessage() . "<br/>";
                 die();
@@ -38,7 +39,7 @@
 
         public function queryUser($email, $password)
         {
-            //query database to check if the email/password combination exists
+            //query database to check if the email/password combination exists (login)
 
             //if exists return true
             //if not exists return false
@@ -50,9 +51,19 @@
 
         }
 
-        public function insertPost()
+        public function insertPost($post)
         {
-            //run SQL query to insert a new post into DB
+            $data = [
+                'type' => $post->getType(),
+                'title' => $post->getTitle(),
+                'description' => $post->getDescription(),
+            ];
+
+            $sql = "INSERT INTO postTest (type, title, description) 
+                    VALUES (:type, :title, :description)";
+
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute($data);
         }
 
 
@@ -64,9 +75,18 @@
         //property declaration
         public $type = "";
         public $title ="";
-        public $description ="";
+        public $content ="";
 
         //methods
+        //constructor
+        function __construct($type, $title, $content)
+        {
+            $this->type = $type;
+            $this->title = $title;
+            $this->content = $content;
+        }
+
+
         //getters and setters
         public function setType($type)
         {
@@ -84,23 +104,23 @@
         {
             return $this->title;
         }
-        public function setDescription($description)
+        public function setContent($content)
         {
-            $this->description = $description;
+            $this->content = $content;
         }
-        public function getDescription()
+        public function getContent()
         {
-            return $this->description;
+            return $this->content;
         }
     }
 
 
-
+    $db = new DBController($DB_USER, $DB_PASSWORD);
     $post = new Post();
     $post->setType($_POST['type']);
     $post->setTitle($_POST['title']);
     $post->setDescription($_POST['description']);
-
+    $db->insertPost($post);
     $type = $_POST['type'];
     $title = $_POST['title'];
     $description = $_POST['description'];
