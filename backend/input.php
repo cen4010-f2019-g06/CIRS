@@ -115,9 +115,9 @@
 
     $db->insertPost($post);
 
-    echo $post->getType() . '<br><br>';
-    echo $post->getTitle() . '<br><br>';
-    echo $post->getDescription() . '<br><br>';
+    //echo $post->getType() . '<br><br>';
+    //echo $post->getTitle() . '<br><br>';
+    //echo $post->getDescription() . '<br><br>';
     //echo $title . '<br><br>';
     //echo $description . '.' . '<br><br>';
     
