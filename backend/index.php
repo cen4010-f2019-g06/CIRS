@@ -36,9 +36,9 @@
                 for($i=0;$i<count($POSTS);$i++)
                 {
                     $output = $POSTS[$i];
-                    echo $output->getType(), "<br>", $output->getTitle(), "<br>", $output->getContent(), "<br><br>";
+                    echo $output->getType(), "<br>", $output->getTitle(), "<br>", $output->getDescription(), "<br><br>";
                     //echo $output->getTitle(), PHP_EOL;
-                    //echo $output->getContent(), PHP_EOL;
+                    //echo $output->getDescription(), PHP_EOL;
                 }
             }
 
@@ -48,15 +48,15 @@
                 $post = new Post();
                 $post->setType($_POST['type']);
                 $post->setTitle($_POST['title']);
-                $post->setContent($_POST['content']);
+                $post->setDescription($_POST['description']);
         
                 $type = $_POST['type'];
                 $title = $_POST['title'];
-                $content = $_POST['content'];
+                $description = $_POST['description'];
             
                 echo $post->getType() . '<br><br>';
                 echo $post->getTitle() . '<br><br>';
-                echo $post->getContent() . '<br><br>';
+                echo $post->getDescription() . '<br><br>';
             }
 
         ?>
@@ -81,7 +81,7 @@
                 </tr>                
                 <tr>    
                     <td>Description</td>
-                    <td><textarea name="content" rows="10" cols="30"></textarea></td>
+                    <td><textarea name="description" rows="10" cols="30"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan = "2" align ="center"><input type = "submit" value = "submit"/></td>
