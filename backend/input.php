@@ -102,7 +102,7 @@
         }
         public function getTitle()
         {
-            return $this->title;ƒ
+            return $this->title;
         }
         public function setDescription($description)
         {
