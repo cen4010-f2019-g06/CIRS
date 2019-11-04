@@ -53,14 +53,10 @@
                 $post->setType($_POST['type']);
                 $post->setTitle($_POST['title']);
                 $post->setDescription($_POST['description']);
-        
-                $type = $_POST['type'];
-                $title = $_POST['title'];
-                $description = $_POST['description'];
-            
-                echo $post->getType() . '<br><br>';
-                echo $post->getTitle() . '<br><br>';
-                echo $post->getDescription() . '<br><br>';
+                    
+                array_push($POST, $post);
+
+                echo "Post submitted";
             }
 
         ?>

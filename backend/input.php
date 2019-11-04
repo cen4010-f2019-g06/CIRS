@@ -9,6 +9,9 @@
 <?php
     include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
 
+    $DB_USER = "root";
+    $DB_PASSWORD = "123456";
+
     class DBController
     {
         private $connection;
