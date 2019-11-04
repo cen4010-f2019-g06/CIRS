@@ -116,11 +116,14 @@
 
 
     $db = new DBController($DB_USER, $DB_PASSWORD);
+    
     $post = new Post();
     $post->setType($_POST['type']);
     $post->setTitle($_POST['title']);
     $post->setDescription($_POST['description']);
+
     $db->insertPost($post);
+
     $type = $_POST['type'];
     $title = $_POST['title'];
     $description = $_POST['description'];
