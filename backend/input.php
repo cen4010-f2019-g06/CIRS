@@ -16,7 +16,7 @@
         public function __construct($DB_USER, $DB_PASSWORD)
         {
             try {
-                $this->connection = new PDO('mysql:host=localhost;dbname=cen4010-f2019-g06', $DB_USER, $DB_PASSWORD);
+                $this->connection = new PDO('mysql:host=localhost;dbname=cen4010fal19_g06', $DB_USER, $DB_PASSWORD);
             } catch (PDOException $e) {
                 print "Error!: " . $e->getMessage() . "<br/>";
                 die();
