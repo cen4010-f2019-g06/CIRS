@@ -37,9 +37,9 @@
             foreach($postsArray as $p)
             {
                 echo "<div class='container intro post'>".
-                    $p->getType() . "<br>" .
-                    $p->getTitle() . "<br>" .
-                    $p->getDescription() . "<br><br>" .
+                    "Type: " . $p->getType() . "<br>" .
+                    "Title: " . $p->getTitle() . "<br>" .
+                    "Content: " . $p->getDescription() . "<br><br>" .
                     "</div>";
             }
 
@@ -51,6 +51,7 @@
     <br>
 
     <div class="container intro">
+        <h2>New Post</h2>
         <form action = "submit.php" method = "POST">
             <table border = "0">
                 <tr>
