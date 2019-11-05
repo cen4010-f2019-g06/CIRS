@@ -28,7 +28,7 @@
         <?php
             include 'input.php';
 
-            $testPost = new Post();
+            /*$testPost = new Post();
             $testPost->setType("Issue");
             $testPost->setTitle("Test Post");
             $testPost->setDescription("Please Ignore.");
@@ -44,7 +44,7 @@
                     //echo $output->getTitle(), PHP_EOL;
                     //echo $output->getDescription(), PHP_EOL;
                 }
-            }
+            }*/
 
         $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 
@@ -60,7 +60,7 @@
                 "</div>";
         }
 
-        if(isset($_POST['submit']))
+        /*if(isset($_POST['submit']))
             {
                 $post = new Post();
                 $post->setType($_POST['type']);
@@ -70,7 +70,7 @@
                 array_push($POST, $post);
 
                 echo "Post submitted";
-            }
+            }*/
 
         ?>
 
@@ -80,7 +80,7 @@
     <br>
 
     <div class="container intro">
-        <form action = "" method = "POST">
+        <form action = "submit.php" method = "POST">
             <table border = "0">
                 <tr>
                     <form>

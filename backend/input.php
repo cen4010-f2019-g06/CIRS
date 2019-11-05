@@ -115,25 +115,19 @@
     }
 
 
-    $db = new DBController($DB_USER, $DB_PASSWORD);
+    //$db = new DBController($DB_USER, $DB_PASSWORD);
     
-//    $post = new Post();
-//    $post->setType("Event");
-//    $post->setTitle("Party");
-//    $post->setDescription("Good times.");
-//
-//    $db->insertPost($post);
+    //$post = new Post();
+    //$post->setType($_POST['type']);
+    //$post->setTitle($_POST['title']);
+    //$post->setDescription($_POST['description']);
 
+    //$db->insertPost($post);
 
-    $posts = $db->getPosts();
+    //echo "post submitted" . "<br>" . "<br>";
 
-    //echo $post->getType() . '<br><br>';
-    //echo $post->getTitle() . '<br><br>';
-    //echo $post->getDescription() . '<br><br>';
-    //echo $title . '<br><br>';
-    //echo $description . '.' . '<br><br>';
-    
-?>
+    ?>
+
 
 </body>
 </html>
