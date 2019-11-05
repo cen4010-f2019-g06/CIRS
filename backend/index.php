@@ -25,52 +25,23 @@
     <br>
 
     <div class="container intro">
+        <h2>Posts</h2>
         <?php
             include 'input.php';
 
-            /*$testPost = new Post();
-            $testPost->setType("Issue");
-            $testPost->setTitle("Test Post");
-            $testPost->setDescription("Please Ignore.");
+            $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 
-            $POSTS = array($testPost);
+            $postsArray = $db->getPosts(); //get array of posts from DB using controller
 
-            if(count($POSTS)!=0)
+            //for each Post in the DB, display it on the page
+            foreach($postsArray as $p)
             {
-                for($i=0;$i<count($POSTS);$i++)
-                {
-                    $output = $POSTS[$i];
-                    echo $output->getType(), "<br>", $output->getTitle(), "<br>", $output->getDescription(), "<br><br>";
-                    //echo $output->getTitle(), PHP_EOL;
-                    //echo $output->getDescription(), PHP_EOL;
-                }
-            }*/
-
-        $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
-
-        $postsArray = $db->getPosts(); //get array of posts from DB using controller
-
-        //for each Post in the DB, display it on the page
-        foreach($postsArray as $p)
-        {
-            echo "<div class='container intro post'>".
-                $p->getType() . "<br>" .
-                $p->getTitle() . "<br>" .
-                $p->getDescription() . "<br><br>" .
-                "</div>";
-        }
-
-        /*if(isset($_POST['submit']))
-            {
-                $post = new Post();
-                $post->setType($_POST['type']);
-                $post->setTitle($_POST['title']);
-                $post->setDescription($_POST['description']);
-                    
-                array_push($POST, $post);
-
-                echo "Post submitted";
-            }*/
+                echo "<div class='container intro post'>".
+                    $p->getType() . "<br>" .
+                    $p->getTitle() . "<br>" .
+                    $p->getDescription() . "<br><br>" .
+                    "</div>";
+            }
 
         ?>
 
