@@ -46,8 +46,21 @@
                 }
             }
 
+        $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 
-            if(isset($_POST['submit']))
+        $postsArray = $db->getPosts(); //get array of posts from DB using controller
+
+        //for each Post in the DB, display it on the page
+        foreach($postsArray as $p)
+        {
+            echo "<div class='container intro post'>".
+                $p->getType() . "<br>" .
+                $p->getTitle() . "<br>" .
+                $p->getDescription() . "<br><br>" .
+                "</div>";
+        }
+
+        if(isset($_POST['submit']))
             {
                 $post = new Post();
                 $post->setType($_POST['type']);

@@ -56,7 +56,7 @@
                 $post = new Post();
                 $post->setType($row['type']);
                 $post->setTitle($row['title']);
-                $post->setType($row['type']);
+                $post->setDescription($row['description']);
                 array_push($posts, $post);
             }
             return $posts;
