@@ -1,3 +1,9 @@
+<?php
+//at top of index.php file
+include "checkLogin.php";
+checkLogin();
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
