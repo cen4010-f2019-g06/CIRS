@@ -1,146 +1,275 @@
-<?php
-//at top of index.php file
-include "checkLogin.php";
-checkLogin();
-?>
-
+<?php include ("nav.php")?>
+<?php $title = "Dashboard"; ?> 
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>CEN 4010 - Group 6</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        
-
-    <link rel="stylesheet" href="css/general.css">
-
-    <script>
-        function showEvent(x)
-        {
-            if(x.checked)
-            {
-                document.getElementById("inputEventDate").style.visibility = "visible";
-            }
-        }
-
-        function hideEvent(x)
-        {
-            if(x.checked)
-            {
-                document.getElementById("inputEventDate").style.visibility = "hidden";
-            }
-        }
-    </script>
-        
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
+    <title><?php echo $title?></title>
 </head>
-<body>
-    <div class="container intro">
-            <h1>Campus Issue Reporting System (CIRS)</h1>
+
+<body class="homepage">
+    <!-- Header Bar-->
+    <header class="header-bar">
+        <a href="index.html" class="logo">[cirs logo]</a>
+
+        <img src="assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
+
+        <div class="search-bar">
+            <img class="search-icon" src="assets/images/icons/search-icon.svg">
+            <input class="search" placeholder="Search" maxlength="200">
+        </div>
+    </header>
+    <div class="horizontal-line"></div>
+
+    <!-- Filter/Create Post-->
+    <div class="dash-header">
+        <div class="post-tile__filter">
+            <h6>Deselect any of the following tags to refine your results:</h6>
+            <div class="filter-option">
+            </div>
+        </div>
+        <div class="create-post__outer">
+            <div class="create-post__inner">
+                <a href="assets/pages/create-post/issue-post.php" class="create-post">create post</a>
+            </div>
+        </div>
     </div>
 
-    <br>
+    <div class="center-element">
+        <!-- Post Grid -->
+        <div class="grid">
+    <!-- #1 -->
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
 
-    <div class="container intro">
-            <h2>Project Description</h2>
-            <p>CIRS is a issue, event, and advice portal for university faculty and students to report to a centralized location.  Currently in development.</p>
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+
+    <!-- #2 -->
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #3 -->  
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Sep 22</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/not-watching.svg"> </div>
+                </footer>
+            </article>
+    <!-- #4 -->     
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #5 -->
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #6 -->   
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #7 -->      
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #8 -->   
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #9 -->   
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #10 -->   
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #11 -->   
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+    <!-- #12 -->   
+            <article class="post-tile column-1-fourth">
+                <div class="post-tile__header">
+                    <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                    <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>
+
+                <div class="post-tile__body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <!-- php post content var (db) (20 characters max)-->
+                </div>
+
+                <footer>
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
+                    </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                </footer>
+            </article>
+            
+        </div>  
     </div>
+    
+        <div class="advice-col-container">
+            <div class="advice-col-box">
+            </div>
+        </div>
 
-    <br>
-
-    <div class="container intro">
-        <h2>Posts</h2>
-        <?php
-            include 'input.php';
-
-            $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
-
-            $postsArray = $db->getPosts(); //get array of posts from DB using controller
-
-            //for each Post in the DB, display it on the page
-            foreach($postsArray as $p)
-            {
-                echo "<div class='container intro post'>".
-                    "Type: " . $p->getType() . "<br>" .
-                    "Title: " . $p->getTitle() . "<br>" .
-                    "Content: " . $p->getDescription() . "<br><br>" .
-                    "</div>";
-            }
-
-        ?>
-
-
-    </div>
-
-    <br>
-
-    <div class="container intro">
-        <h2>New Post</h2>
-        <form action = "submit.php" method = "POST">
-            <table border = "0">
-                <tr>
-                    <form>
-                        <input type="radio" name="type" value="Issue" checked onchange="hideEvent(this)"> Issue
-                        <input type="radio" name="type" value="Event" onchange="showEvent(this)"> Event
-                        <input type="radio" name="type" value="Advice" onchange="hideEvent(this)"> Advice<br>
-                    </form>
-                <tr>
-                    <td>Title</td>
-                    <td><textarea name="title" rows="1" cols="30"></textarea></td>
-                </tr>                
-                <tr>
-                    <td>Description</td>
-                    <td><textarea name="description" rows="10" cols="30"></textarea></td>
-                </tr>
-                <tr id ="inputEventDate" style="visibility:hidden">
-                    <td>Event Date</td>
-                    <td>
-                        <div class="container">
-                            <div class="row">
-                                <div class='col-sm-6'>
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input name="eventDate" type='text' class="form-control"/>
-                                            <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#datetimepicker1').datetimepicker();
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan = "2" align ="center"><input type = "submit" value = "submit"/></td>
-                </tr>
-            </table>
-        </form>
-    </div>
-
-
-
-    <br>
-
-    <div class="container intro">
-        <h2> CEN 4010 - Group 6 - Group Members</h2>
-        <a href="aboutDev/gkveton2017.html">Grant Kveton<br></a>
-        <a href="aboutDev/nappletongue2015.html">Nicole Appleton Guerrero<br></a>
-        <a href="aboutDev/kfash2017.html">Kevin Fash<br></a>
-    </div>
-
-
-
+    <!-- include google's jquery hosted library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/scripts/main.js"></script>
 </body>
+
 </html>
