@@ -10,10 +10,34 @@ checkLogin();
 <head>
     <meta charset="UTF-8">
     <title>CEN 4010 - Group 6</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/general.css">
+
+    <script>
+        function showEvent(x)
+        {
+            if(x.checked)
+            {
+                document.getElementById("inputEventDate").style.visibility = "visible";
+            }
+        }
+
+        function hideEvent(x)
+        {
+            if(x.checked)
+            {
+                document.getElementById("inputEventDate").style.visibility = "hidden";
+            }
+        }
+    </script>
         
 </head>
 <body>
@@ -62,17 +86,41 @@ checkLogin();
             <table border = "0">
                 <tr>
                     <form>
-                        <input type="radio" name="type" value="Issue" checked> Issue
-                        <input type="radio" name="type" value="Event"> Event
-                        <input type="radio" name="type" value="Advice"> Advice<br>
+                        <input type="radio" name="type" value="Issue" checked onchange="hideEvent(this)"> Issue
+                        <input type="radio" name="type" value="Event" onchange="showEvent(this)"> Event
+                        <input type="radio" name="type" value="Advice" onchange="hideEvent(this)"> Advice<br>
                     </form>
                 <tr>
                     <td>Title</td>
                     <td><textarea name="title" rows="1" cols="30"></textarea></td>
                 </tr>                
-                <tr>    
+                <tr>
                     <td>Description</td>
                     <td><textarea name="description" rows="10" cols="30"></textarea></td>
+                </tr>
+                <tr id ="inputEventDate" style="visibility:hidden">
+                    <td>Event Date</td>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input name="eventDate" type='text' class="form-control"/>
+                                            <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker1').datetimepicker();
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan = "2" align ="center"><input type = "submit" value = "submit"/></td>
@@ -80,6 +128,8 @@ checkLogin();
             </table>
         </form>
     </div>
+
+
 
     <br>
 
@@ -90,15 +140,7 @@ checkLogin();
         <a href="aboutDev/kfash2017.html">Kevin Fash<br></a>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+
 
 </body>
 </html>

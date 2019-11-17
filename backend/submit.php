@@ -1,5 +1,8 @@
 <?php
     include "input.php";
+    include 'Credentials.php'; //Database credentials stored in separate file not being push to repo for security practices
+    include 'Post.php';
+    include 'DBController.php';
 
     $db = new DBController($DB_USER, $DB_PASSWORD);
     
