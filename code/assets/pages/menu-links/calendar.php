@@ -1,3 +1,4 @@
+<?php include ("../../../nav.php")?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,14 +7,14 @@
     <link rel="stylesheet" href="../../stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
     <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
-    <title>Event</title>
-    <!--php:echo $title-->
+    <title>Calendar</title>
 </head>
     
 <body>
+    <!-- Header Bar-->
     <header class="header-bar">
-            <a href="../../../index.html" class="logo">[cirs logo]</a>
-            <img src="../../images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed">
+            <a href="../../../index.php" class="logo">[cirs logo]</a>
+            <img src="../../images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 
             <div class="search-bar">
                 <img class="search-icon" src="../../images/icons/search-icon.svg">
@@ -86,5 +87,9 @@
         </table>
 
     </div>
+
+    <!-- include google's jquery hosted library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../scripts/main.js"></script>
 </body>
 </html>

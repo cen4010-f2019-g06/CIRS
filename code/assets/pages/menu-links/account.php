@@ -1,3 +1,4 @@
+<?php include ("../../../nav.php")?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +12,13 @@
     
 <body>
     <header class="header-bar">
-            <a href="../../../index.html" class="logo">[cirs logo]</a>
-            <img src="../../images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
+        <a href="../../../index.php" class="logo">[cirs logo]</a>
+        <img src="../../images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 
-            <div class="search-bar">
-                <img class="search-icon" src="../../images/icons/search-icon.svg">
-                <input class="search" placeholder="Search">
-            </div>
+        <div class="search-bar">
+            <img class="search-icon" src="../../images/icons/search-icon.svg">
+            <input class="search" placeholder="Search">
+        </div>
     </header>
     <div class="horizontal-line"></div>
     
@@ -68,5 +69,8 @@
             </div>
         </aside>
     </div>
+    <!-- include google's jquery hosted library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../scripts/main.js"></script>
 </body>
 </html>

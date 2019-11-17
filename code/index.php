@@ -13,8 +13,7 @@
 <body class="homepage">
     <!-- Header Bar-->
     <header class="header-bar">
-        <a href="index.html" class="logo">[cirs logo]</a>
-
+        <a href="index.php" class="logo">[cirs logo]</a>
         <img src="assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 
         <div class="search-bar">

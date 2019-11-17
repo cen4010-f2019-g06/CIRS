@@ -34,16 +34,16 @@
                 <a href="/index.php" class="menu-item">dashboard</a></li>
             <div class="horizontal-line"></div>
             <li>
-                <a href="/assets/pages/menu-links/account.html" class="menu-item">my account</a></li>
+                <a href="/assets/pages/menu-links/account.php" class="menu-item">my account</a></li>
             <div class="horizontal-line"></div>
             <li>
-                <a href="/assets/pages/menu-links/calendar.html" class="menu-item">calendar</a></li>
+                <a href="/assets/pages/menu-links/calendar.php" class="menu-item">calendar</a></li>
             <div class="horizontal-line"></div>
             <li>
                 <a href="/assets/pages/menu-links/support.php" class="menu-item">support</a></li>
             <div class="horizontal-line"></div>
             <li>
-                <a href="/assets/pages/menu-links/faq.html" class="menu-item">faq</a></li>
+                <a href="/assets/pages/menu-links/faq.php" class="menu-item">faq</a></li>
             <div class="horizontal-line"></div>
         </ul>
         <a href="/assets/pages/login-protocol/signup.html" class="menu-item logout">Logout.</a>
