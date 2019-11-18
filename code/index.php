@@ -1,8 +1,6 @@
 <?php
 include 'DBController.php';
 include 'Credentials.php';
-include ("assets/pages/nav.php");
-
 $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 ?>
 
@@ -17,6 +15,7 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
 </head>
 
 <body>
+	<?php include ("assets/pages/nav.php"); ?>
     <!-- Header Bar-->
     <header class="header-bar">
         <a href="index.php" class="logo">[cirs logo]</a>
@@ -76,20 +75,19 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
                     $statusImage = $db->queryStatusIcon($issuePostsArray[$i]->getStatus()); //get path to status image
                     $watchIcon = $db->queryWatchIcon($issuePostsArray[$i]->getWatchId()); //get path to watch icon image
 
-                    echo '<article class="post-tile column-1-fourth">'.
-                        '            <div class="post-tile__header">
-                <img class="post-tile__status" src="' . $statusImage . '">
-                <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
-                </div>' .
+                    echo '<article class="column-1-fourth">' .
+                        	'<div class="post-tile__header">
+                			<img class="post-tile__status" src=' . $statusImage . '>
+                			<img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                		</div>' .
                         '<div class="post-tile__body">
-                <p>' . substr($issuePostsArray[$i]->getContent(), 1, 20) . '...</p>
-                <!-- php post content var (db) (20 characters max)-->
-                </div>' .
-                        '            <footer>
-                <div class="post-tile__date"><time datetime="2019-08-30">'. $issuePostsArray[$i]->getTime(). '</time> <!-- php date var (db) -->
-                </div>
-                <div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
-                </footer>
+                		<p>' . substr($issuePostsArray[$i]->getContent(), 1, 150) . ' . . .</p>
+                	</div>' .
+                       '<footer>
+                		<div class="post-tile__date"><time>'. $issuePostsArray[$i]->getTime(). '</time>
+                		</div>
+                		<div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
+                	</footer>
                 </article>';
                 }
                 ?>
@@ -114,7 +112,7 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
                                         <footer>
                                             <div class='advice-col__date'><time datetime='" . $advicePostsArray[$i]->getTime() . "'>" . $advicePostsArray[$i]->getTime() . "</time>
                                             </div>
-                                            <div class='advice-col__comments'>(TODO:Comment count) comments<img class='comment-icon' src='assets/images/icons/comment-icon.svg'></div>
+                                            <div class='advice-col__comments'>(count) comments<img class='comment-icon' src='assets/images/icons/comment-icon.svg'></div>
                                         </footer>
                                     </div>
                                 ";
