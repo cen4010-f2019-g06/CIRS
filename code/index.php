@@ -1,4 +1,4 @@
-<?php include ("nav.php")?>
+<?php include ("assets/pages/nav.php")?>
 <?php $title = "Dashboard"; ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@
         </div>
         <div class="create-post__outer">
             <div class="create-post__inner">
-                <a href="assets/pages/create-post/issue-post.php" class="create-post">create post</a>
+                <a href="assets/pages/issue-post.php" class="create-post">create post</a>
             </div>
         </div>
     </div>
@@ -90,9 +90,9 @@
                 </div>
 
                 <footer>
-                    <div class="post-tile__date"><time datetime="2019-08-30">Sep 22</time> <!-- php date var (db) -->
+                    <div class="post-tile__date"><time datetime="2019-08-30">Aug 30</time> <!-- php date var (db) -->
                     </div>
-                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/not-watching.svg"> </div>
+                    <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
                 </footer>
             </article>
     <!-- #4 -->     
