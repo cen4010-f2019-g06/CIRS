@@ -11,7 +11,7 @@
     
 <body>
     <header class="header-bar">
-        <a href="admin-login.html" class="login-redirect">Admin Login</a>
+        <a href="admin-login.php" class="login-redirect">Admin Login</a>
     </header>
     <div class="horizontal-line"></div>
     
@@ -42,7 +42,7 @@
             </fieldset>
             
             <span class="have-account">Already have an account? 
-                <span class="login"><a href="login.html">Login.</a></span>
+                <span class="login"><a href="login.php">Login.</a></span>
             </span>
         </div>
     </div>

@@ -11,7 +11,7 @@
     
 <body>
     <header class="header-bar">
-        <a href="admin-login.html" class="login-redirect">Admin Login</a>
+        <a href="admin-login.php" class="login-redirect">Admin Login</a>
     </header>
     <div class="horizontal-line"></div>
     
@@ -41,7 +41,7 @@
         </div>
         <div class="no-account">
             <span class="have-account">No account? 
-                <span class="login"><a href="signup.html">Create one.</a></span>
+                <span class="login"><a href="signup.php">Create one.</a></span>
             </span>
         </div>
     </div>

@@ -8,15 +8,15 @@
     <div class="menu">
         <ul>
             <li>
-                <a href="../../index.html" class="menu-item">post review</a></li>
+                <a href="../../index.php" class="menu-item">post review</a></li>
             <div class="admin__horizontal-line"></div>
             <li>
-                <a href="account.html" class="admin__menu-item">flag review</a></li>
+                <a href="account.php" class="admin__menu-item">flag review</a></li>
             <div class="admin__horizontal-line"></div>
             <li>
-                <a href="calendar.html" class="menu-item">my account</a></li>
+                <a href="calendar.php" class="menu-item">my account</a></li>
             <div class="admin__horizontal-line"></div>
         </ul>
-        <a href="signup.html" class="menu-item logout">Logout.</a>
+        <a href="signup.php" class="menu-item logout">Logout.</a>
     </div>
 </nav>

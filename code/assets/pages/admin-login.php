@@ -11,7 +11,7 @@
     
 <body class="admin-body">
     <header class="header-bar">
-        <a href="signup.html" class="admin__login-redirect">User Login</a>
+        <a href="signup.php" class="admin__login-redirect">User Login</a>
     </header>
     <div class="admin__horizontal-line"></div>
     
