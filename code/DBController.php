@@ -152,6 +152,28 @@ class DBController
         $stmt->execute($data);
     }
 
+    public function insertIssuePost($issue)
+    {
+        $data = [
+            'title' => $issue->getTitle(),
+            'postedByUserId' => $issue->getPostedByUserId(),
+            'postedByZNum' => $issue->getPostedByZNum(),
+            'status' => $issue->getStatus(),
+            'content' => $issue->getContent(),
+            'userIcon' => $issue->getUserIcon(),
+            'time' => $issue->getTime(),
+            'watchId' => $issue->getWatchId(),
+            'watchCount' => $issue->getWatchCount(),
+            'adminReviews' => $issue->getAdminReviews(),
+        ];
+
+        $sql = "INSERT INTO issues (title, postedByUserId, postedByZNum, content, time, watchCount, status, adminReviews, userIcon, watchId)
+                    VALUES (:title, :postedByUserId, :postedByZNum, :content, :time, :watchCount, :status, :adminReviews, :userIcon, :watchId)";
+        
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($data);
+    }
+
     public function insertPost($post)
     {
         //determine post type.

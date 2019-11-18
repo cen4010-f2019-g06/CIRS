@@ -3,6 +3,7 @@ class Issue extends Post
 {
     private $status = "";
     private $adminReviews;
+    private $postedByUserId = "";
 
     public function getStatus()
     {
@@ -22,5 +23,15 @@ class Issue extends Post
     public function setAdminReviews($adminReviews)
     {
         $this->adminReviews = $adminReviews;
+    }
+
+    public function getPostedByUserId()
+    {
+        return $this->postedByUserId;
+    }
+
+    public function setPostedByUserId($postedByUserId)
+    {
+        $this->postedByUserId = $postedByUserId;
     }
 }

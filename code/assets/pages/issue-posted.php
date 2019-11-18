@@ -30,8 +30,37 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
     <p>Issue posted.</p>
     <?php
 
+        $issuePost = new Issue();
+        $issuePost->setTitle($_POST['title']);
+        $issuePost->setContent($_POST['content']);
+        $issuePost->setPostedByUserId(6);
+        $issuePost->setPostedByZNum(23355639);
+        $issuePost->setStatus(5);
+        $issuePost->setTime(date("Y-m-d"));
+        $issuePost->setWatchCount(0);
+        $issuePost->setUserIcon("/~cen4010fal19_g06/assets/images/icons/default-user-icon.svg");
+        $issuePost->setWatchId(2);
+        $issuePost->setAdminReviews(0);
 
+        $statusImage = $db->queryStatusIcon($issuePost->getStatus()); //get path to status image
+        $watchIcon = $db->queryWatchIcon($issuePost->getWatchId()); //get path to watch icon image
 
+        echo '<article class="column-1-fourth">' .
+                        	'<div class="post-tile__header">
+                			<img class="post-tile__status" src=' . $statusImage . '>
+                			<img src="../images/icons/default-user-icon.svg" class="user-avatar">
+                		</div>' .
+                        '<div class="post-tile__body">
+                		<p>' . substr($issuePost->getContent(), 1, 150) . ' . . .</p>
+                	</div>' .
+                       '<footer>
+                		<div class="post-tile__date"><time>'. $issuePost->getTime(). '</time>
+                		</div>
+                		<div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePost->getWatchCount().'</div>
+                	</footer>
+                </article>';
+
+        $db->insertIssuePost($issuePost);
 
    ?>
 
