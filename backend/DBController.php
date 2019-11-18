@@ -1,4 +1,6 @@
 <?php
+include 'Post.php';
+include 'Issue.php';
 
 class DBController
 {
@@ -36,37 +38,32 @@ class DBController
         //if not exists return false
     }
 
-    public function getPosts()
+    public function getIssuePosts()
     {
-        $posts = array();
+        $issuePosts = array();
 
         //query database for all posts and store in an array of type Post[]
-        $sql = "SELECT type, title, description FROM postTest";
+        $sql = "SELECT title, content, time, watchCount, status, adminReviews, userIcon, watchIcon, postedByZNum FROM issues";
         foreach($this->connection->query($sql) as $row)
         {
-            $post = new Post();
-            $post->setType($row['type']);
-            $post->setTitle($row['title']);
-            $post->setDescription($row['description']);
-            array_push($posts, $post);
+            $issuePost = new Issue();
+            $issuePost->setTitle($row['title']);
+            $issuePost->setContent($row['content']);
+            $issuePost->setPostedByZNum($row['postedByZNum']);
+            $issuePost->setTime($row['time']);
+            $issuePost->setWatchCount($row['watchCount']);
+            $issuePost->setStatus($row['status']);
+            $issuePost->setAdminReviews($row['adminReviews']);
+            $issuePost->setUserIcon($row['userIcon']);
+            $issuePost->setWatchIcon($row['watchIcon']);
+            array_push($issuePosts, $issuePost);
         }
-        return $posts;
+        return $issuePosts;
     }
 
     public function insertPost($post)
     {
-        if($post->getType() == 'Advice')
-        {
-            $typeTable = 'advice';
-        }
-        else if($post->getType() == 'Issue')
-        {
-            $typeTable = 'issues';
-        }
-        else if($post->getType() == 'Event')
-        {
-            $typeTable = 'events';
-        }
+        //determine post type.
 
         $data = [
             'title' => $post->getTitle(),

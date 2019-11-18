@@ -2,20 +2,13 @@
 class Post
 {
     //property declaration
-    public $type = "";
-    public $title ="";
-    public $description ="";
+    private $title ="";
+    private $content ="";
+    private $postedByZNum = "";
+    private $time = "";
 
     //methods
     //getters and setters
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-    public function getType()
-    {
-        return $this->type;
-    }
     public function setTitle($title)
     {
         $this->title = $title;
@@ -24,12 +17,32 @@ class Post
     {
         return $this->title;
     }
-    public function setDescription($description)
+    public function setContent($content)
     {
-        $this->description = $description;
+        $this->content = $content;
     }
-    public function getDescription()
+    public function getContent()
     {
-        return $this->description;
+        return $this->content;
+    }
+
+    public function getPostedByZNum()
+    {
+        return $this->postedByZNum;
+    }
+
+    public function setPostedByZNum($postedByZNum)
+    {
+        $this->postedByZNum = $postedByZNum;
+    }
+
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    public function setTime($time)
+    {
+        $this->time = $time;
     }
 }
