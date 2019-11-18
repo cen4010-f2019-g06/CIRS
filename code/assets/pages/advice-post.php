@@ -1,4 +1,6 @@
-<?php include ("nav.php")?>
+<?php 
+include ("nav.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,15 +33,17 @@
     <div class="hl-spacing"></div>
     
     <div class="center-element">
-        <div class="post-container--cp">
-            <h4 class="advice-header">Ask a Question</h4>
-            <div class="center-element">
-                <textarea class="post-content--advice" maxlength="100"></textarea>
-            </div>
+        <form action = "advice-posted.php" method = "POST">
+            <div class="post-container--cp">
+                <h4 class="advice-header">Ask a Question</h4>
+                <div class="center-element">
+                    <textarea class="post-content--advice" name="content" maxlength="100"></textarea>
+                </div>
             
-            <input class="anonymous" type="checkbox" value="anonymous">Post anonymously<br>
-            <button class="submit-bttn">Submit</button>
-        </div>
+                <input class="anonymous" type="checkbox" value="anonymous">Post anonymously<br>
+                <button class="submit-bttn" input type="submit">Submit</button>
+            </div>
+        </form>
     </div>
     
     <!-- include google's jquery hosted library -->

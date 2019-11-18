@@ -131,7 +131,26 @@ class DBController
 
         return $eventPosts;
     }
+    public function insertAdvicePost($advice)
+    {
+        $data = [
+            'postedByUserId' => $advice->getPostedByUserId(),
+            'postedByZNum' => $advice->getPostedByZNum(),
+            'status' => $advice->getStatus(),
+            'content' => $advice->getContent(),
+            'userIcon' => $advice->getUserIcon(),
+            'time' => $advice->getTime(),
+            'watchId' => $advice->getWatchId(),
+            'watchCount' => $advice->getWatchCount(),
+            'commentCount' => $advice->getCommentCount(),
+        ];
 
+        $sql = "INSERT INTO advice (postedByUserId, postedByZNum, status, content, userIcon, time, watchId, watchCount, commentCount)
+                    VALUES (:postedByUserId, :postedByZNum, :status, :content, :userIcon, :time, :watchId, :watchCount, :commentCount)";
+        
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($data);
+    }
 
     public function insertPost($post)
     {
