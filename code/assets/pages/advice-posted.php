@@ -11,7 +11,7 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
     <meta charset="utf-8">
     <link rel="stylesheet" href="../stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
-    <title>Advice</title>
+    <title>Advice Posted</title>
     <!--php:echo $title-->
 </head>
     
@@ -36,7 +36,7 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
         $advicePost->setPostedByZNum(23355639);
         $advicePost->setStatus(5);
         $advicePost->setTime(date("Y-m-d"));
-        $advicePost->setWatchCount(3);
+        $advicePost->setWatchCount(0);
         $advicePost->setUserIcon("/~cen4010fal19_g06/assets/images/icons/default-user-icon.svg");
         $advicePost->setWatchId(2);
         $advicePost->setCommentCount(0);
