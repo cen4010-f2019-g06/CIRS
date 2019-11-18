@@ -36,7 +36,7 @@ include 'Credentials.php';
     </div>
     <div class="create-post__outer">
         <div class="create-post__inner">
-            <a href="assets/pages/create-post/issue-post.php" class="create-post">create post</a>
+            <a href="assets/pages/issue-post.php" class="create-post">create post</a>
         </div>
     </div>
 </div>
@@ -51,7 +51,7 @@ include 'Credentials.php';
         $issuePostsArray = $db->getIssuePosts(); //get array of Issue posts from DB using controller
 
         //for each Post in the DB, display it on the page
-        foreach($issuePostsArray as $p)
+        for($i=0; $i<12; $i++)
         {
             echo '<article class="post-tile column-1-fourth">'.
                 '            <div class="post-tile__header">
@@ -59,11 +59,11 @@ include 'Credentials.php';
                 <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
                 </div>' .
                 '<div class="post-tile__body">
-                <p>' . substr($p->getContent(), 1, 20) . '...</p>
+                <p>' . substr($issuePostsArray[$i]->getContent(), 1, 20) . '...</p>
                 <!-- php post content var (db) (20 characters max)-->
                 </div>' .
                 '            <footer>
-                <div class="post-tile__date"><time datetime="2019-08-30">'. $p->getTime(). '</time> <!-- php date var (db) -->
+                <div class="post-tile__date"><time datetime="2019-08-30">'. $issuePostsArray[$i]->getTime(). '</time> <!-- php date var (db) -->
                 </div>
                 <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
                 </footer>

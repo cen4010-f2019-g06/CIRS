@@ -21,7 +21,7 @@
             
             <fieldset>
                 <div class="cred-label__align">
-                    <label class="cred-label__user">Username</label></div>
+                    <label class="cred-label__email">Username</label></div>
                 <input class="cred-field" type="text" name="username" maxlength="20" required>
                 
                 <div class="cred-label__align">
