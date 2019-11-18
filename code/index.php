@@ -14,7 +14,7 @@ include 'Credentials.php';
 </head>
 
 <body>
-    <?php include 'assets/pages/nav.php'?>
+    <?php include ('assets/pages/nav.php')?>
     <!-- Header Bar-->
     <header class="header-bar">
         <a href="index.php" class="logo">[cirs logo]</a>
