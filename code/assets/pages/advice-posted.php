@@ -1,6 +1,8 @@
 <?php 
 include ("nav.php");
 include ("../../DBController.php");
+include ("../../Credentials.php");
+$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +52,7 @@ include ("../../DBController.php");
                                     </div>
                                 ";
     
-        insertAdvicePost($advicePost);
+        $db->insertAdvicePost($advicePost);
     ?>
 
     <!-- include google's jquery hosted library -->
