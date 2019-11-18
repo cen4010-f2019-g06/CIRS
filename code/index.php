@@ -2,6 +2,8 @@
 include 'DBController.php';
 include 'Credentials.php';
 include ("assets/pages/nav.php");
+
+$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 ?>
 
 <!DOCTYPE html>
@@ -66,33 +68,13 @@ include ("assets/pages/nav.php");
                  * Dynamically outputs 12 posts by filling HTML template with DB data
                  */
 
-                $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
-
                 $issuePostsArray = $db->getIssuePosts(); //get array of Issue posts from DB using controller
 
                 //for each Post in the DB, display it on the page
                 for($i=0; $i<12; $i++)
                 {
-                    if ($issuePostsArray[$i]->getStatus() == "Reviewed")
-                    {
-                        $statusImage = "assets/images/icons/status/status-reviewed.svg";
-                    }
-                    else if($issuePostsArray[$i]->getStatus() == "In Progress")
-                    {
-                        $statusImage = "assets/images/icons/status/status-in-progress.svg";
-                    }
-                    else if($issuePostsArray[$i]->getStatus() == "Pending")
-                    {
-                        $statusImage = "assets/images/icons/status/status-pending.svg";
-                    }
-                    else if($issuePostsArray[$i]->getStatus() == "Done")
-                    {
-                        $statusImage = "assets/images/icons/status/status-done.svg";
-                    }
-                    else if($issuePostsArray[$i]->getStatus() == "None")
-                    {
-                        $statusImage = "assets/images/icons/status/status-none.svg";
-                    }
+                    $statusImage = $db->queryStatusIcon($issuePostsArray[$i]->getStatus()); //get path to status image
+                    $watchIcon = $db->queryWatchIcon($issuePostsArray[$i]->getWatchId()); //get path to watch icon image
 
                     echo '<article class="post-tile column-1-fourth">'.
                         '            <div class="post-tile__header">
@@ -106,7 +88,7 @@ include ("assets/pages/nav.php");
                         '            <footer>
                 <div class="post-tile__date"><time datetime="2019-08-30">'. $issuePostsArray[$i]->getTime(). '</time> <!-- php date var (db) -->
                 </div>
-                <div class="post-tile__watching"><img src='. $issuePostsArray[$i]->getWatchIcon() .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
+                <div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
                 </footer>
                 </article>';
                 }
@@ -119,30 +101,26 @@ include ("assets/pages/nav.php");
                     <img class="arrow-size" src="assets/images/buttons/next-page-right.svg">
                 </button>
             </div>
-
+            <div class='advice-col-container'>
             <!-- Advice Column -->
             <?php
-                include 'input.php';
+                $advicePostsArray = $db->getAdvicePosts(); //get array of posts from DB using controller
 
-                $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
-
-                $postsArray = $db->getPosts(); //get array of posts from DB using controller
-
-                //for each Post in the DB, display it on the page
-                foreach($postsArray as $p)
-                {
-                    echo    "<div class='advice-col-container'>
-                                <div class='advice-col-box'>
-                                    <img class='advice-icon' src='assets/images/icons/indicators/advice-indicator.svg'>
-                                    <div class='advice-col-body'>" . $p->getContent() . "</div>
-                                    <footer>
-                                        <div class='advice-col__date'><time datetime='" . $p->getDate() . "'>" . $p->getDate() . "</time>
-                                        </div>
-                                        <div class='advice-col__comments'>" . $p->getCommentCount . "comments<img class='comment-icon' src='assets/images/icons/comment-icon.svg'></div>
-                                    </footer>
-                                </div>
-                            </div>";
-            }?>
+                for($i=0; $i<5; $i++)
+                    {
+                        echo    "   <div class='advice-col-box'>
+                                        <img class='advice-icon' src='assets/images/icons/indicators/advice-indicator.svg'>
+                                        <div class='advice-col-body'>" . $advicePostsArray[$i]->getContent() . "</div>
+                                        <footer>
+                                            <div class='advice-col__date'><time datetime='" . $advicePostsArray[$i]->getTime() . "'>" . $advicePostsArray[$i]->getTime() . "</time>
+                                            </div>
+                                            <div class='advice-col__comments'>(TODO:Comment count) comments<img class='comment-icon' src='assets/images/icons/comment-icon.svg'></div>
+                                        </footer>
+                                    </div>
+                                ";
+                     }
+            ?>
+            </div>
             <div class="clear-floats"></div>
             <input class="page-num-container" placeholder="1" disabled>
         </div>

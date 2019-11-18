@@ -6,6 +6,9 @@ class Post
     private $content ="";
     private $postedByZNum = "";
     private $time = "";
+    private $watchId;
+    private $watchCount = "";
+    private $userIcon = "";
 
     //methods
     //getters and setters
@@ -44,5 +47,35 @@ class Post
     public function setTime($time)
     {
         $this->time = $time;
+    }
+
+    public function getWatchCount()
+    {
+        return $this->watchCount;
+    }
+
+    public function setWatchCount($watchCount)
+    {
+        $this->watchCount = $watchCount;
+    }
+
+    public function getUserIcon()
+    {
+        return $this->userIcon;
+    }
+
+    public function setUserIcon($userIcon)
+    {
+        $this->userIcon = $userIcon;
+    }
+
+    public function getWatchId()
+    {
+        return $this->watchId;
+    }
+
+    public function setWatchId($watchId)
+    {
+        $this->watchId = $watchId;
     }
 }

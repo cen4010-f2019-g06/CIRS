@@ -1,20 +1,8 @@
 <?php
 class Event extends Post
 {
-    private $watchCount;
     private $location = "";
     private $eventDate = "";
-
-    public function getWatchCount()
-    {
-        return $this->watchCount;
-    }
-
-
-    public function setWatchCount($watchCount)
-    {
-        $this->watchCount = $watchCount;
-    }
 
     public function getLocation()
     {

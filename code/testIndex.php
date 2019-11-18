@@ -57,26 +57,8 @@ include 'Credentials.php';
         //for each Post in the DB, display it on the page
         for($i=0; $i<12; $i++)
         {
-            if ($issuePostsArray[$i]->getStatus() == "Reviewed")
-            {
-                $statusImage = "assets/images/icons/status/status-reviewed.svg";
-            }
-            else if($issuePostsArray[$i]->getStatus() == "In Progress")
-            {
-                $statusImage = "assets/images/icons/status/status-in-progress.svg";
-            }
-            else if($issuePostsArray[$i]->getStatus() == "Pending")
-            {
-                $statusImage = "assets/images/icons/status/status-pending.svg";
-            }
-            else if($issuePostsArray[$i]->getStatus() == "Done")
-            {
-                $statusImage = "assets/images/icons/status/status-done.svg";
-            }
-            else if($issuePostsArray[$i]->getStatus() == "None")
-            {
-                $statusImage = "assets/images/icons/status/status-none.svg";
-            }
+            $statusImage = $db->queryStatusIcon($issuePostsArray[$i]->getStatus()); //get path to status image
+            $watchIcon = $db->queryWatchIcon($issuePostsArray[$i]->getWatchId()); //get path to watch icon image
 
             echo '<article class="post-tile column-1-fourth">'.
                 '            <div class="post-tile__header">
@@ -90,7 +72,7 @@ include 'Credentials.php';
                 '            <footer>
                 <div class="post-tile__date"><time datetime="2019-08-30">'. $issuePostsArray[$i]->getTime(). '</time> <!-- php date var (db) -->
                 </div>
-                <div class="post-tile__watching"><img src='. $issuePostsArray[$i]->getWatchIcon() .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
+                <div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
                 </footer>
                 </article>';
         }
