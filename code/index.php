@@ -1,6 +1,7 @@
 <?php
 include 'DBController.php';
 include 'Credentials.php';
+include ("assets/pages/nav.php");
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,6 @@ include 'Credentials.php';
 </head>
 
 <body>
-    <?php include ('assets/pages/nav.php')?>
     <!-- Header Bar-->
     <header class="header-bar">
         <a href="index.php" class="logo">[cirs logo]</a>
