@@ -36,7 +36,7 @@ include 'Credentials.php';
     </div>
     <div class="create-post__outer">
         <div class="create-post__inner">
-            <a href="assets/pages/issue-post.php" class="create-post">create post</a>
+            <a href="assets/pages/create-post/issue-post.php" class="create-post">create post</a>
         </div>
     </div>
 </div>
@@ -46,6 +46,10 @@ include 'Credentials.php';
     <div class="grid">
 
         <?php
+        /*
+         * Dynamically outputs 12 posts by filling HTML template with DB data
+         */
+
         $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 
         $issuePostsArray = $db->getIssuePosts(); //get array of Issue posts from DB using controller
@@ -53,9 +57,30 @@ include 'Credentials.php';
         //for each Post in the DB, display it on the page
         for($i=0; $i<12; $i++)
         {
+            if ($issuePostsArray[$i]->getStatus() == "Reviewed")
+            {
+                $statusImage = "assets/images/icons/status/status-reviewed.svg";
+            }
+            else if($issuePostsArray[$i]->getStatus() == "In Progress")
+            {
+                $statusImage = "assets/images/icons/status/status-in-progress.svg";
+            }
+            else if($issuePostsArray[$i]->getStatus() == "Pending")
+            {
+                $statusImage = "assets/images/icons/status/status-pending.svg";
+            }
+            else if($issuePostsArray[$i]->getStatus() == "Done")
+            {
+                $statusImage = "assets/images/icons/status/status-done.svg";
+            }
+            else if($issuePostsArray[$i]->getStatus() == "None")
+            {
+                $statusImage = "assets/images/icons/status/status-none.svg";
+            }
+
             echo '<article class="post-tile column-1-fourth">'.
                 '            <div class="post-tile__header">
-                <img class="post-tile__status" src="assets/images/icons/status/status-pending.svg">
+                <img class="post-tile__status" src="' . $statusImage . '">
                 <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
                 </div>' .
                 '<div class="post-tile__body">
@@ -65,7 +90,7 @@ include 'Credentials.php';
                 '            <footer>
                 <div class="post-tile__date"><time datetime="2019-08-30">'. $issuePostsArray[$i]->getTime(). '</time> <!-- php date var (db) -->
                 </div>
-                <div class="post-tile__watching"><img src="assets/images/icons/indicators/watching.svg">4</div>
+                <div class="post-tile__watching"><img src='. $issuePostsArray[$i]->getWatchIcon() .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
                 </footer>
                 </article>';
         }
