@@ -1,3 +1,8 @@
+<?php
+include 'DBController.php';
+include 'Credentials.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,31 +62,55 @@
             <!-- Post Grid -->
             <div class="grid">
                 <?php
-                    include 'input.php';
+                /*
+                 * Dynamically outputs 12 posts by filling HTML template with DB data
+                 */
 
-                    $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
+                $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
 
-                    $postsArray = $db->getPosts(); //get array of posts from DB using controller
+                $issuePostsArray = $db->getIssuePosts(); //get array of Issue posts from DB using controller
 
-                    //for each Post in the DB, display it on the page
-                    foreach($postsArray as $p)
+                //for each Post in the DB, display it on the page
+                for($i=0; $i<12; $i++)
+                {
+                    if ($issuePostsArray[$i]->getStatus() == "Reviewed")
                     {
-                        echo   "<article class='post-tile column-1-fourth'>
-                                <div class='post-tile__header'>
-                                    <img class='post-tile__status' src='" . $p->getStatus() . "'>
-                                    <img src='" . $p->getUserIcon() . "' class='user-avatar'>
-                                </div>
+                        $statusImage = "assets/images/icons/status/status-reviewed.svg";
+                    }
+                    else if($issuePostsArray[$i]->getStatus() == "In Progress")
+                    {
+                        $statusImage = "assets/images/icons/status/status-in-progress.svg";
+                    }
+                    else if($issuePostsArray[$i]->getStatus() == "Pending")
+                    {
+                        $statusImage = "assets/images/icons/status/status-pending.svg";
+                    }
+                    else if($issuePostsArray[$i]->getStatus() == "Done")
+                    {
+                        $statusImage = "assets/images/icons/status/status-done.svg";
+                    }
+                    else if($issuePostsArray[$i]->getStatus() == "None")
+                    {
+                        $statusImage = "assets/images/icons/status/status-none.svg";
+                    }
 
-                                <div class='post-tile__body'>
-                                    <p>" . $p->getContent() . "</p>
-                                </div>
-
-                                <footer>
-                                    <div class='post-tile__date'><time datetime='" . $p->getDate() . "'>" . $p->getDate() . "</time></div>
-                                    <div class='post-tile__watching'><img src='" . $p->getWatchIcon . "'>" . $p->getWatchCount() . "</div>
-                                </footer>
-                            </article>";
-                }?>
+                    echo '<article class="post-tile column-1-fourth">'.
+                        '            <div class="post-tile__header">
+                <img class="post-tile__status" src="' . $statusImage . '">
+                <img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
+                </div>' .
+                        '<div class="post-tile__body">
+                <p>' . substr($issuePostsArray[$i]->getContent(), 1, 20) . '...</p>
+                <!-- php post content var (db) (20 characters max)-->
+                </div>' .
+                        '            <footer>
+                <div class="post-tile__date"><time datetime="2019-08-30">'. $issuePostsArray[$i]->getTime(). '</time> <!-- php date var (db) -->
+                </div>
+                <div class="post-tile__watching"><img src='. $issuePostsArray[$i]->getWatchIcon() .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
+                </footer>
+                </article>';
+                }
+                ?>
             </div>
 
             <!-- Right Page Nav -->

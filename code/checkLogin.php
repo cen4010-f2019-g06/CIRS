@@ -1,4 +1,5 @@
 <?php
+//checkLogin.php:
 session_start();
 
 function checkLogin()
@@ -10,4 +11,3 @@ function checkLogin()
         header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/login.php");
     }
 }
-

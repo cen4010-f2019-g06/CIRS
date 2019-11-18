@@ -76,5 +76,4 @@ class DBController
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
     }
-
 }
