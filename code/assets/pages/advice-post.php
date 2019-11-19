@@ -37,7 +37,7 @@ include ("nav.php");
             <div class="post-container--cp">
                 <h4 class="advice-header">Ask a Question</h4>
                 <div class="center-element">
-                    <textarea class="post-content--advice" name="content" maxlength="100"></textarea>
+                    <textarea class="post-content--advice" name="content" placeholder="Description..." maxlength="100"></textarea>
                 </div>
             
                 <input class="anonymous" type="checkbox" value="anonymous">Post anonymously<br>

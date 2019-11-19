@@ -36,9 +36,13 @@
                     <div>
                         <label class="post-field-label tooltip">Description
                         <span class="tooltip-text__far">This will be the only thing users see when viewing your post from the dashboard</span></label>
-                        <input class="post-field" name="title" maxlength="150"></div>             
+                        <input class="post-field" name="title" placeholder="Title..." maxlength="150"></div>             
                 </fieldset>
                 
+                <div class="center-element">
+                    <textarea class="post-content--advice" name="content" placeholder="Description..." maxlength="100"></textarea>
+                </div>
+                <!--
                 <div class="center-element">
                     <textarea name="content" maxlength="500"></textarea>
                     <script>
@@ -57,7 +61,7 @@
                         });
                     </script>
                 </div>
-
+                    -->
                 <input class="anonymous" type="checkbox" value="anonymous">Post anonymously
                 <button class="submit-bttn" input type="submit">Submit</button>
             </div>

@@ -156,7 +156,6 @@ class DBController
         $stmt->execute($data);
     }
 
-
     public function insertIssuePost($issue)
     {
         $data = [
@@ -174,6 +173,29 @@ class DBController
 
         $sql = "INSERT INTO issues (title, postedByUserId, postedByZNum, content, time, watchCount, status, adminReviews, userIcon, watchId)
                     VALUES (:title, :postedByUserId, :postedByZNum, :content, :time, :watchCount, :status, :adminReviews, :userIcon, :watchId)";
+        
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($data);
+    }
+
+    public function insertEventPost($event)
+    {
+        $data = [
+            'title' => $event->getTitle(),
+            'postedByUserId' => $event->getPostedByUserId(),
+            'postedByZNum' => $event->getPostedByZNum(),
+            'status' => $event->getStatus(),
+            'content' => $event->getContent(),
+            'userIcon' => $event->getUserIcon(),
+            'time' => $event->getTime(),
+            'watchId' => $event->getWatchId(),
+            'watchCount' => $event->getWatchCount(),
+            'location' => $event->getLocation(),
+            'eventDate' => $event->getEventDate(),
+        ];
+
+        $sql = "INSERT INTO events (title, postedByUserId, postedByZNum, status, content, userIcon, time, watchId, watchCount, location, eventDate)
+                    VALUES (:title, :postedByUserId, :postedByZNum, :status, :content, :userIcon, :time, :watchId, :watchCount, :location, :eventDate)";
         
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
