@@ -29,9 +29,20 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
 
     <p>Event posted.</p>
     <?php
+        $eventPost = new Event();
+        $eventPost->setTitle($_POST['title']);
+        $eventPost->setPostedByUserId(6);
+        $eventPost->setPostedByZNum(23355639);
+        $eventPost->setStatus(5);
+        $eventPost->setContent($_POST['content']);
+        $eventPost->setUserIcon("/~cen4010fal19_g06/assets/images/icons/default-user-icon.svg");
+        $eventPost->setTime(date("Y-m-d H:i:s"));
+        $eventPost->setWatchId(2);
+        $eventPost->setWatchCount(0);
+        $eventPost->setLocation($_POST['location']);
+        $eventPost->setEventDate($_POST['date'] . ' ' . $_POST['time']);
 
-
-
+        $db->insertEventPost($eventPost);
     ?>
 
     <!-- include google's jquery hosted library -->
