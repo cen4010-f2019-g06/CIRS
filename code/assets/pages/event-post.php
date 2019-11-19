@@ -36,18 +36,18 @@
     <div class="center-element">
         <form action = "event-posted.php" method = "POST">
             <div class="container">
-                <fieldset class="post-field-container__medium">
-                        <div>
-                            <label class="post-field-label">Location</label>
-                            <input class="post-field" name="location" maxlength="150"></div>             
-                </fieldset>
-                <fieldset class="post-field-container__medium">
-                        <div>
-                            <label class="time-sel-label">Pick a Date</label>
-                            <input type="time" class="time-sel timepicker" name="time" maxlength="150"></div>             
-                </fieldset>
+                <input class="post-field" name="title" placeholder="Title..." maxlength="150">
+            </div>             
+            <div class="container">
+                <input class="post-field" name="location" placeholder="Location..." maxlength="150">
             </div>
-            
+            <div class="container">
+                <input class="post-field" name="date" type="date" max="9999-12-12T00:00:00.00" />
+            </div>
+            <div class="container">
+                <input class="post-field" name="time" type="time" max="9999-12-12T00:00:00.00" />
+            </div>
+            <!--
             <table class="container">
                 <caption class="calendar-month">November 2019</caption>
                 <thead>
@@ -109,6 +109,7 @@
                 </tr>
                 </tbody>
             </table>
+            -->
             <!--
             <div class="calendar-content container">
                 <textarea name="event" maxlength="500"></textarea>
@@ -125,10 +126,10 @@
                     });
                 </script>
             </div>
-                -->
+            -->
             <div class="hl-spacing"></div>
             <div class="hl-spacing"></div>
-            
+
             <div class="center-element">
                 <textarea class="post-content--advice" name="content" placeholder="Description..." maxlength="100"></textarea>
             </div>
