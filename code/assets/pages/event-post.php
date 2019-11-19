@@ -34,100 +34,108 @@
     <div class="hl-spacing"></div>
     
     <div class="center-element">
-        <div class="container">
-            <fieldset class="post-field-container__medium">
-                    <div>
-                        <label class="post-field-label">Location</label>
-                        <input class="post-field" maxlength="150"></div>             
-            </fieldset>
-            <fieldset class="post-field-container__medium">
-                    <div>
-                        <label class="time-sel-label">Pick a Date</label>
-                        <input type="time" class="time-sel timepicker" maxlength="150"></div>             
-            </fieldset>
-        </div>
-        
-        <table class="container">
-            <caption class="calendar-month">November 2019</caption>
-            <thead>
-                <tr>
-                    <th class="calendar-col calendar-cell" scope="col">Mon</th>
-                    <th class="calendar-col calendar-cell" scope="col">Tues</th>
-                    <th class="calendar-col calendar-cell" scope="col">Wed</th>
-                    <th class="calendar-col calendar-cell" scope="col">Thurs</th>
-                    <th class="calendar-col calendar-cell" scope="col">Fri</th>
-                    <th class="calendar-col calendar-cell" scope="col">Sat</th>
-                    <th class="calendar-col calendar-cell" scope="col">Sun</th>
+        <form action = "event-posted.php" method = "POST">
+            <div class="container">
+                <fieldset class="post-field-container__medium">
+                        <div>
+                            <label class="post-field-label">Location</label>
+                            <input class="post-field" name="location" maxlength="150"></div>             
+                </fieldset>
+                <fieldset class="post-field-container__medium">
+                        <div>
+                            <label class="time-sel-label">Pick a Date</label>
+                            <input type="time" class="time-sel timepicker" name="time" maxlength="150"></div>             
+                </fieldset>
+            </div>
+            
+            <table class="container">
+                <caption class="calendar-month">November 2019</caption>
+                <thead>
+                    <tr>
+                        <th class="calendar-col calendar-cell" scope="col">Mon</th>
+                        <th class="calendar-col calendar-cell" scope="col">Tues</th>
+                        <th class="calendar-col calendar-cell" scope="col">Wed</th>
+                        <th class="calendar-col calendar-cell" scope="col">Thurs</th>
+                        <th class="calendar-col calendar-cell" scope="col">Fri</th>
+                        <th class="calendar-col calendar-cell" scope="col">Sat</th>
+                        <th class="calendar-col calendar-cell" scope="col">Sun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr class="calendar-rows">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="calendar-cell-row">1</td>
+                    <td class="calendar-cell-row">2</td>
+                    <td class="calendar-cell-row">3</td>
                 </tr>
-            </thead>
-            <tbody>
-            <tr class="calendar-rows">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="calendar-cell-row">1</td>
-                <td class="calendar-cell-row">2</td>
-                <td class="calendar-cell-row">3</td>
-            </tr>
-            <tr class="calendar-rows">
-                <td class="calendar-cell-row">4</td>
-                <td class="calendar-cell-row">5</td>
-                <td class="calendar-cell-row">6</td>
-                <td class="calendar-cell-row">7</td>
-                <td class="calendar-cell-row">8</td>
-                <td class="calendar-cell-row">9</td>
-                <td class="calendar-cell-row">10</td>
-            </tr>
-            <tr class="calendar-rows">
-                <td class="calendar-cell-row">11</td>
-                <td class="calendar-cell-row">12</td>
-                <td class="calendar-cell-row">13</td>
-                <td class="calendar-cell-row">14</td>
-                <td class="calendar-cell-row">15</td>
-                <td class="calendar-cell-row">16</td>
-                <td class="calendar-cell-row">17</td>
-            </tr>
-            <tr class="calendar-rows">
-                <td class="calendar-cell-row">18</td>
-                <td class="calendar-cell-row">19</td>
-                <td class="calendar-cell-row">20</td>
-                <td class="calendar-cell-row">21</td>
-                <td class="calendar-cell-row">22</td>
-                <td class="calendar-cell-row">23</td>
-                <td class="calendar-cell-row">24</td>
-            </tr>
-            <tr class="calendar-rows">
-                <td class="calendar-cell-row">25</td>
-                <td class="calendar-cell-row">26</td>
-                <td class="calendar-cell-row">27</td>
-                <td class="calendar-cell-row">28</td>
-                <td class="calendar-cell-row">29</td>
-                <td class="calendar-cell-row">30</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-        
-        <div class="calendar-content container">
-            <textarea name="event" maxlength="500"></textarea>
-            <script>
-                CKEDITOR.replace('event', {    
-                    height: 150,
-                    width: 960,
-                    toolbarGroups: [
-                        {"name": "basicstyles", "groups": ["basicstyles"]},
-                        {"name": "links",       "groups": ["links"]},
-                    ],
-                    // Remove the redundant buttons from toolbar groups defined above.
-                    removeButtons: 'Subscript,Superscript,Anchor'
-                });
-            </script>
-        </div>
-        
-        <div class="container remove-pad">      
-            <button class="submit-bttn">Submit</button>
-        </div>
+                <tr class="calendar-rows">
+                    <td class="calendar-cell-row">4</td>
+                    <td class="calendar-cell-row">5</td>
+                    <td class="calendar-cell-row">6</td>
+                    <td class="calendar-cell-row">7</td>
+                    <td class="calendar-cell-row">8</td>
+                    <td class="calendar-cell-row">9</td>
+                    <td class="calendar-cell-row">10</td>
+                </tr>
+                <tr class="calendar-rows">
+                    <td class="calendar-cell-row">11</td>
+                    <td class="calendar-cell-row">12</td>
+                    <td class="calendar-cell-row">13</td>
+                    <td class="calendar-cell-row">14</td>
+                    <td class="calendar-cell-row">15</td>
+                    <td class="calendar-cell-row">16</td>
+                    <td class="calendar-cell-row">17</td>
+                </tr>
+                <tr class="calendar-rows">
+                    <td class="calendar-cell-row">18</td>
+                    <td class="calendar-cell-row">19</td>
+                    <td class="calendar-cell-row">20</td>
+                    <td class="calendar-cell-row">21</td>
+                    <td class="calendar-cell-row">22</td>
+                    <td class="calendar-cell-row">23</td>
+                    <td class="calendar-cell-row">24</td>
+                </tr>
+                <tr class="calendar-rows">
+                    <td class="calendar-cell-row">25</td>
+                    <td class="calendar-cell-row">26</td>
+                    <td class="calendar-cell-row">27</td>
+                    <td class="calendar-cell-row">28</td>
+                    <td class="calendar-cell-row">29</td>
+                    <td class="calendar-cell-row">30</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--
+            <div class="calendar-content container">
+                <textarea name="event" maxlength="500"></textarea>
+                <script>
+                    CKEDITOR.replace('event', {    
+                        height: 150,
+                        width: 960,
+                        toolbarGroups: [
+                            {"name": "basicstyles", "groups": ["basicstyles"]},
+                            {"name": "links",       "groups": ["links"]},
+                        ],
+                        // Remove the redundant buttons from toolbar groups defined above.
+                        removeButtons: 'Subscript,Superscript,Anchor'
+                    });
+                </script>
+            </div>
+                -->
+            <div class="hl-spacing"></div>
+            <div class="hl-spacing"></div>
+            
+            <div class="center-element">
+                <textarea class="post-content--advice" name="content" placeholder="Description..." maxlength="100"></textarea>
+            </div>
+            <div class="container remove-pad">      
+                <button class="submit-bttn" input type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 
     <!-- load google's jquery hosted library -->
