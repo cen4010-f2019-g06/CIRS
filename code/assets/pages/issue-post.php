@@ -30,36 +30,38 @@
     </div>
         
     <div class="center-element">
-        <div class="post-container--cp">
-            <fieldset class="post-field-container__small">
-                <div>
-                    <label class="post-field-label tooltip">Description
-                    <span class="tooltip-text__far">This will be the only thing users see when viewing your post from the dashboard</span></label>
-                    <input class="post-field" maxlength="150"></div>             
-            </fieldset>
-            
-            <div class="center-element">
-                <textarea name="issue" maxlength="500"></textarea>
-                <script>
-                    CKEDITOR.replace('issue', {    
-                        height: 400,
-                        width: 555,
-                        toolbarGroups: [
-                            {"name": "basicstyles", "groups": ["basicstyles"]},
-                            {"name": "links",       "groups": ["links"]},
-                            {"name": "paragraph",   "groups": ["list"]},
-                            {"name": "document",    "groups": ["mode", "document", "doctools"]},
-                            {"name": "insert",      "groups": ["insert"]},
-                        ],
-                        // Remove the redundant buttons from toolbar groups defined above.
-                        removeButtons: 'Subscript,Superscript,Anchor'
-                    });
-                </script>
-            </div>
+        <form action = "issue-posted.php" method = "POST">
+            <div class="post-container--cp">
+                <fieldset class="post-field-container__small">
+                    <div>
+                        <label class="post-field-label tooltip">Description
+                        <span class="tooltip-text__far">This will be the only thing users see when viewing your post from the dashboard</span></label>
+                        <input class="post-field" name="title" maxlength="150"></div>             
+                </fieldset>
+                
+                <div class="center-element">
+                    <textarea name="content" maxlength="500"></textarea>
+                    <script>
+                        CKEDITOR.replace('content', {    
+                            height: 400,
+                            width: 555,
+                            toolbarGroups: [
+                                {"name": "basicstyles", "groups": ["basicstyles"]},
+                                {"name": "links",       "groups": ["links"]},
+                                {"name": "paragraph",   "groups": ["list"]},
+                                {"name": "document",    "groups": ["mode", "document", "doctools"]},
+                                {"name": "insert",      "groups": ["insert"]},
+                            ],
+                            // Remove the redundant buttons from toolbar groups defined above.
+                            removeButtons: 'Subscript,Superscript,Anchor'
+                        });
+                    </script>
+                </div>
 
-            <input class="anonymous" type="checkbox" value="anonymous">Post anonymously
-            <button class="submit-bttn">Submit</button>
-        </div>
+                <input class="anonymous" type="checkbox" value="anonymous">Post anonymously
+                <button class="submit-bttn" input type="submit">Submit</button>
+            </div>
+        </form>
     </div>
     
     <!-- include google's jquery hosted library -->
