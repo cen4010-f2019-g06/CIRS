@@ -1,11 +1,10 @@
 <?php
 include 'Credentials.php';
-
-$user = $DB_USER;
-$pass = $DB_PASSWORD;
+include 'DBController.php';
 
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=cen4010fal19_g06', $user, $pass);
+    //Establish connection to DB with controller
+    $db = new DBController($DB_USER, $DB_PASSWORD);
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();

@@ -152,6 +152,7 @@ class DBController
         $stmt->execute($data);
     }
 
+
     public function insertIssuePost($issue)
     {
         $data = [
@@ -208,5 +209,22 @@ class DBController
 
         $result = $this->connection->query($sql)->fetch();
         return $result[0];
+    }
+
+    public function insertComment($comment)
+    {
+        $data = [
+            'content'=>$comment->getContent(),
+            'postedByUserId'=>$comment->getPostedByUserId(),
+            'time'=>$comment->getTime(),
+            'upvotes'=>$comment->getUpvotes(),
+            'downvotes'=>$comment->getDownvotes(),
+        ];
+
+        $sql = "INSERT INTO comments (content, postedByUserId, time, upvotes, downvotes)
+                VALUES (:content, :postedByUserId, :time, :upvotes, :downvotes)";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($data);
     }
 }
