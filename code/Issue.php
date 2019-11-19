@@ -1,4 +1,5 @@
 <?php
+include'CommentSection.php';
 class Issue extends Post
 {
     private $status = "";

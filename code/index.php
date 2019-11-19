@@ -2,6 +2,7 @@
 include 'DBController.php';
 include 'Credentials.php';
 $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
+
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +71,7 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
                 $issuePostsArray = $db->getIssuePosts(); //get array of Issue posts from DB using controller
 
                 //for each Post in the DB, display it on the page
-                for($i=0; $i<12; $i++)
+                for($i=count($issuePostsArray)-1; $i>=count($issuePostsArray)-12; $i--)
                 {
                     $statusImage = $db->queryStatusIcon($issuePostsArray[$i]->getStatus()); //get path to status image
                     $watchIcon = $db->queryWatchIcon($issuePostsArray[$i]->getWatchId()); //get path to watch icon image

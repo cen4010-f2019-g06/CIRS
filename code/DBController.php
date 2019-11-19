@@ -49,13 +49,14 @@ class DBController
     {
         $issuePosts = array();
 
-        $sql = "SELECT title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum FROM issues";
+        $sql = "SELECT issueId, title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum FROM issues";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
         foreach($stmt->fetchAll() as $row)
         {
             $issuePost = new Issue();
+            $issuePost->setPostId($row['issueId']);
             $issuePost->setTitle($row['title']);
             $issuePost->setContent($row['content']);
             $issuePost->setPostedByZNum($row['postedByZNum']);
@@ -80,13 +81,14 @@ class DBController
     {
         $advicePosts = array();
 
-        $sql = "SELECT title, content, time, watchCount, userIcon, watchId, postedByZNum FROM advice";
+        $sql = "SELECT adviceId, title, content, time, watchCount, userIcon, watchId, postedByZNum FROM advice";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
         foreach($stmt->fetchAll() as $row)
         {
             $advicePost = new Advice();
+            $advicePost->setPostId($row['adviceId']);
             $advicePost->setTitle($row['title']);
             $advicePost->setContent($row['content']);
             $advicePost->setPostedByZNum($row['postedByZNum']);
@@ -109,13 +111,14 @@ class DBController
     {
         $eventPosts = array();
 
-        $sql = "SELECT title, content, time, watchCount, userIcon, watchId, postedByZNum, location, eventDate FROM events";
+        $sql = "SELECT eventId, title, content, time, watchCount, userIcon, watchId, postedByZNum, location, eventDate FROM events";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
         foreach($stmt->fetchAll() as $row)
         {
             $eventPost = new Event();
+            $eventPost->setPostId($row['eventId']);
             $eventPost->setTitle($row['title']);
             $eventPost->setContent($row['content']);
             $eventPost->setPostedByZNum($row['postedByZNum']);
@@ -131,6 +134,7 @@ class DBController
 
         return $eventPosts;
     }
+
     public function insertAdvicePost($advice)
     {
         $data = [
@@ -221,7 +225,7 @@ class DBController
             'downvotes'=>$comment->getDownvotes(),
         ];
 
-        $sql = "INSERT INTO comments (content, postedByUserId, time, upvotes, downvotes)
+        $sql = "INSERT INTO comment (content, postedByUserId, time, upvotes, downvotes)
                 VALUES (:content, :postedByUserId, :time, :upvotes, :downvotes)";
 
         $stmt = $this->connection->prepare($sql);

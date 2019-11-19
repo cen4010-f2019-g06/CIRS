@@ -2,6 +2,7 @@
 class Post
 {
     //property declaration
+    private $postId;
     private $title ="";
     private $content ="";
     private $postedByZNum = "";
@@ -12,6 +13,17 @@ class Post
 
     //methods
     //getters and setters
+
+    public function getPostId()
+    {
+        return $this->postId;
+    }
+
+    public function setPostId($postId)
+    {
+        $this->postId = $postId;
+    }
+
     public function setTitle($title)
     {
         $this->title = $title;
