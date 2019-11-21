@@ -8,6 +8,6 @@ function checkLogin()
 
     } else {
         // Redirect to the login page
-        header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/login.php");
+        header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/assets/pages/login.php");
     }
 }

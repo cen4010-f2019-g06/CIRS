@@ -3,6 +3,7 @@ include 'Post.php';
 include 'Issue.php';
 include 'Advice.php';
 include 'Event.php';
+include 'CommentSection.php';
 
 class DBController
 {
@@ -49,7 +50,8 @@ class DBController
     {
         $issuePosts = array();
 
-        $sql = "SELECT issueId, title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum FROM issues";
+        $sql = "SELECT issueId, title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum 
+                FROM issues";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
@@ -81,7 +83,8 @@ class DBController
     {
         $advicePosts = array();
 
-        $sql = "SELECT adviceId, title, content, time, watchCount, userIcon, watchId, postedByZNum FROM advice";
+        $sql = "SELECT adviceId, title, content, time, watchCount, userIcon, watchId, postedByZNum 
+                FROM advice";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
@@ -111,7 +114,8 @@ class DBController
     {
         $eventPosts = array();
 
-        $sql = "SELECT eventId, title, content, time, watchCount, userIcon, watchId, postedByZNum, location, eventDate FROM events";
+        $sql = "SELECT eventId, title, content, time, watchCount, userIcon, watchId, postedByZNum, location, eventDate 
+                FROM events";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
@@ -221,7 +225,9 @@ class DBController
     //Takes parameter of the statusId number value
     public function queryStatusIcon($statusValue)
     {
-        $sql = 'SELECT statusIcon FROM status WHERE statusId ='.$statusValue;
+        $sql = 'SELECT statusIcon 
+                FROM status 
+                WHERE statusId ='.$statusValue;
 
         $result = $this->connection->query($sql)->fetch();
         return $result[0];
@@ -231,7 +237,9 @@ class DBController
     //Takes parameter of the watchId number value
     public function queryWatchIcon($watchValue)
     {
-        $sql = 'SELECT watchIcon FROM watchIcon WHERE watchId ='.$watchValue;
+        $sql = 'SELECT watchIcon 
+                FROM watchIcon 
+                WHERE watchId ='.$watchValue;
 
         $result = $this->connection->query($sql)->fetch();
         return $result[0];
@@ -245,12 +253,50 @@ class DBController
             'time'=>$comment->getTime(),
             'upvotes'=>$comment->getUpvotes(),
             'downvotes'=>$comment->getDownvotes(),
+            'sectionId'=>$comment->getSectionId(),
         ];
 
-        $sql = "INSERT INTO comment (content, postedByUserId, time, upvotes, downvotes)
-                VALUES (:content, :postedByUserId, :time, :upvotes, :downvotes)";
+        $sql = "INSERT INTO comments (content, postedByUserId, time, upvotes, downvotes, sectionId)
+                VALUES (:content, :postedByUserId, :time, :upvotes, :downvotes, :sectionId)";
 
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
+    }
+
+    public function queryCommentSectionId($postId, $postType)
+    {
+        $sql = "SELECT sectionId 
+                FROM commentSections 
+                WHERE postId = ".$postId.
+                " AND postType = '". $postType . "'";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_BOTH);
+        return $result[0];
+    }
+
+    public function getCommentSection($postId, $postType)
+    {
+        $sectionId = $this->queryCommentSectionId($postId, $postType);
+
+        $commentSection = new CommentSection($postId, $postType, $sectionId);
+
+        $sql = "SELECT * 
+                FROM comments
+                WHERE sectionId = ". $sectionId;
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        foreach($stmt->fetchAll() as $row)
+        {
+            $comment = new Comment($row['content'], $row['postedByUserId'], $row['sectionId']);
+            $comment->setTime($row['time']);
+            $comment->setUpvotes($row['upvotes']);
+            $comment->setDownvotes($row['downvotes']);
+
+            $commentSection->addComment($comment);
+        }
+
+        return $commentSection;
     }
 }

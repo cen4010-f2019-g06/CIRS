@@ -3,14 +3,16 @@ class Comment
 {
     private $content;
     private $postedByUserId;
+    private $sectionId;
     private $time;
     private $upvotes = 0;
     private $downvotes = 0;
 
-    function __construct($content, $postedByUserId)
+    function __construct($content, $postedByUserId, $sectionId)
     {
         $this->content = $content;
         $this->postedByUserId = $postedByUserId;
+        $this->sectionId = $sectionId;
         //create new datetime
         $this->time = new DateTime();
         $this->time = $this->time->format('Y-m-d H:i:s');
@@ -64,5 +66,10 @@ class Comment
     public function setDownvotes($downvotes)
     {
         $this->downvotes = $downvotes;
+    }
+
+    public function getSectionId()
+    {
+        return $this->sectionId;
     }
 }
