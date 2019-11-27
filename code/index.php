@@ -1,7 +1,6 @@
 <?php
-include 'DBController.php';
-include 'Credentials.php';
-$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
+include 'checkLogin.php';
+include_once 'DBConnection.php';
 
 ?>
 
@@ -82,7 +81,7 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
                 			<img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
                 		</div>' .
                         '<div class="post-tile__body">
-                		<p>' . substr($issuePostsArray[$i]->getContent(), 1, 150) . ' . . .</p>
+                		<p>' . substr($issuePostsArray[$i]->getContent(), 0, 150) . ' . . .</p>
                 	</div>' .
                        '<footer>
                 		<div class="post-tile__date"><time>'. $issuePostsArray[$i]->getTime(). '</time>

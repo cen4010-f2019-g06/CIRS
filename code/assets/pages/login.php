@@ -18,26 +18,27 @@
     <div class="center-element">
         <div class="login-box--small">
             <h2 class="login-message">Hello again!</h2>
-            
-            <fieldset>
-                <div class="cred-label__align">
-                    <label class="cred-label__email">Email</label></div>
-                <input class="cred-field" type="email" name="email" maxlength="25" required>
-                    
-                <div class="cred-label__align">
-                    <label class="cred-label__pass">Password</label></div>
-                <input class="cred-field" type="password" name="password" required>
-            </fieldset>
-            
-            
-            <input class="stay-logged-in" id="remember-me" type="checkbox" value="Keep me signed in" onclick="rememberLoginMsg(this.id, 'remember-msg')">
-            Keep me signed in
-            
-            <span id="remember-msg" style="font-size: 14px; color: var(--error-red); display: inline-block; visibility: hidden;">
-                Caution: You should not use this option while visting this site on a public computer.</span>
-            
-            <div class="horizontal-line"></div><br/>
-            <input class="login-bttn" type="submit" value="Login"> 
+
+            <form action="/~cen4010fal19_g06/loginUser.php" method="post">
+                <fieldset>
+                    <div class="cred-label__align">
+                        <label class="cred-label__email">Email</label></div>
+                    <input class="cred-field" type="email" name="email" maxlength="25" required>
+
+                    <div class="cred-label__align">
+                        <label class="cred-label__pass">Password</label></div>
+                    <input class="cred-field" type="password" name="password" required>
+                </fieldset>
+
+                <input class="stay-logged-in" id="remember-me" type="checkbox" value="Keep me signed in" onclick="rememberLoginMsg(this.id, 'remember-msg')">
+                Keep me signed in
+
+                <span id="remember-msg" style="font-size: 14px; color: var(--error-red); display: inline-block; visibility: hidden;">
+                    Caution: You should not use this option while visting this site on a public computer.</span>
+
+                <div class="horizontal-line"></div><br/>
+                <input class="login-bttn" type="submit" value="Login">
+            </form>
         </div>
         <div class="no-account">
             <span class="have-account">No account? 

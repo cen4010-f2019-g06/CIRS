@@ -18,29 +18,34 @@
     <div class="center-element">
         <div class="login-box--large">
             <h2 class="login-message">Welcome!</h2>
-            
-            <fieldset>
-                <div class="cred-label__align">
-                    <label class="cred-label__email">Username</label></div>
-                <input class="cred-field" type="text" name="username" maxlength="20" required>
-                
-                <div class="cred-label__align">
-                    <label class="cred-label__email">Email</label></div>
-                <input class="cred-field" type="email" name="email" maxlength="25" required>
-                    
-                <div class="cred-label__align">
-                    <label class="cred-label__pass">Password</label></div>
-                <input class="cred-field" type="password" name="password" required>
-            </fieldset>
-            
-            <div class="hl-spacing"></div>
-            <div class="horizontal-line"></div>
-            
-            
-            <fieldset class="login-action">
-                <button class="login-bttn" name="signup">Sign Up</button>
-            </fieldset>
-            
+
+            <form action="/~cen4010fal19_g06/createUser.php" method="post">
+                <fieldset>
+                    <div class="cred-label__align">
+                        <label class="cred-label__email">Username</label></div>
+                    <input class="cred-field" type="text" name="username" maxlength="20" required>
+
+                    <div class="cred-label__align">
+                        <label class="cred-label__email">Z Number</label></div>
+                    <input class="cred-field" type="text" name="znumber" maxlength="8" required>
+
+                    <div class="cred-label__align">
+                        <label class="cred-label__email">Email</label></div>
+                    <input class="cred-field" type="email" name="email" maxlength="25" required>
+
+                    <div class="cred-label__align">
+                        <label class="cred-label__pass">Password</label></div>
+                    <input class="cred-field" type="password" name="password" required>
+                </fieldset>
+
+                <div class="hl-spacing"></div>
+                <div class="horizontal-line"></div>
+
+                <fieldset class="login-action">
+                    <input class="login-bttn" type="submit" value="Sign Up">
+                </fieldset>
+            </form>
+
             <span class="have-account">Already have an account? 
                 <span class="login"><a href="login.php">Login.</a></span>
             </span>

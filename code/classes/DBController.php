@@ -19,26 +19,68 @@ class DBController
         }
     }
 
-    public function insertUser($name, $password, $email)
+    public function insertUser($username, $znumber, $email, $password)
     {
         $data = [
-            'name' => $name,
-            'password' => $password,
+            'username' => $username,
+            'znumber' => $znumber,
             'email' => $email,
+            'password' => $password,
         ];
-        $sql = "INSERT INTO users (name, password, email) 
-                    VALUES (:name, :password, :email)";
+        $sql = "INSERT INTO users (username, znumber, email, password) 
+                    VALUES (:username, :znumber, :email, :password)";
 
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);
     }
 
-    public function queryUser($email, $password)
+    public function verifyUser($email, $password)
     {
         //query database to check if the email/password combination exists (login)
+        $sql = 'SELECT * 
+                FROM users 
+                WHERE email ="'.$email.'"';
 
-        //if exists return true
-        //if not exists return false
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $user = $result ->fetch();
+
+            if(password_verify($password, $user['password']))
+            {
+                return true;
+            }
+            else
+            {
+                //Invalid password for email
+                return false;
+            }
+        }
+        else
+        {
+            //No user with email in DB
+            return false;
+        }
+    }
+
+    public function getUser($email)
+    {
+        $sql = 'SELECT * 
+                FROM users 
+                WHERE email ="'.$email.'"';
+
+        $result = $this->connection->query($sql);
+        if($result->rowCount()>0)
+        {
+            $user = $result ->fetch();
+            return $user;
+        }
+        else
+        {
+            //No user with email in DB
+            return false;
+        }
     }
 
     /*

@@ -1,6 +1,6 @@
 <?php
-//checkLogin.php:
 session_start();
+checkLogin();
 
 function checkLogin()
 {

@@ -1,8 +1,6 @@
 <?php 
 include ("nav.php");
-include ("../../DBController.php");
-include ("../../Credentials.php");
-$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller;
+include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
