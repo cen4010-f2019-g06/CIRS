@@ -5,14 +5,11 @@ include_once 'DBConnection.php';
 
 if(!empty($_POST))
 {
-
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     if($db->verifyUser($email, $password))
     {
-        echo "Valid";
-
         $user = $db->getUser($email);
 
         $_SESSION['email'] = $user['email'];

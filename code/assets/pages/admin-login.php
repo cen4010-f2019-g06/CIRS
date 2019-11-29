@@ -18,22 +18,24 @@
     <div class="center-element">
         <div class="login-box--small">
             <h2 class="admin__login-message">Welcome Administrator!</h2>
-            
-            <fieldset class="center-element">
-                <div class="cred-label__align">
-                    <label class="admin__cred-label__email">Email</label></div>
-                    <input class="admin__cred-field" type="email" name="email" maxlength="25" required>
-                
-                <div class="cred-label__align">
-                    <legend class="admin__cred-label__pass">Password</legend></div>
-                <input class="admin__cred-field" type="password" name="password" required>
-            </fieldset>
-            
-            <fieldset>
-                <div class="hl-spacing"></div>
-                <div class="admin__horizontal-line"></div><br><br>
-                <input class="admin__login-bttn" type="submit" value="Login"> 
-            </fieldset>
+
+            <form action="/~cen4010fal19_g06/loginAdmin.php" method="post">
+                <fieldset class="center-element">
+                    <div class="cred-label__align">
+                        <label class="admin__cred-label__email">Email</label></div>
+                        <input class="admin__cred-field" type="email" name="email" maxlength="25" required>
+
+                    <div class="cred-label__align">
+                        <legend class="admin__cred-label__pass">Password</legend></div>
+                    <input class="admin__cred-field" type="password" name="password" required>
+                </fieldset>
+
+                <fieldset>
+                    <div class="hl-spacing"></div>
+                    <div class="admin__horizontal-line"></div><br><br>
+                    <input class="admin__login-bttn" type="submit" value="Login">
+                </fieldset>
+            </form>
         </div>
     </div>
 </body>

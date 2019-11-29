@@ -1,8 +1,6 @@
 <?php
 
-include '/home/cen4010fal19_g06/public_html/DBController.php';
-include '/home/cen4010fal19_g06/public_html/Credentials.php';
-$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
+include_once 'DBConnection.php';
 
 if(!empty($_POST)) {
     $username = $_POST['username'];

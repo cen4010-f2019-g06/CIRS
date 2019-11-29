@@ -83,6 +83,55 @@ class DBController
         }
     }
 
+    public function verifyAdmin($email, $password)
+    {
+        $sql = 'SELECT * 
+                FROM admins 
+                WHERE email ="'.$email.'"';
+
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $admin = $result ->fetch();
+            echo "at least 1 db query result";
+
+            if(password_verify($password, $admin['password']))
+            {
+                return true;
+            }
+            else
+            {
+                //Invalid password for email
+                return false;
+            }
+        }
+        else
+        {
+            //No user with email in DB
+            return false;
+        }
+    }
+
+    public function getAdmin($email)
+    {
+        $sql = 'SELECT * 
+                FROM admins 
+                WHERE email ="'.$email.'"';
+
+        $result = $this->connection->query($sql);
+        if($result->rowCount()>0)
+        {
+            $admin = $result ->fetch();
+            return $admin;
+        }
+        else
+        {
+            //No user with email in DB
+            return false;
+        }
+    }
+
     /*
      * Queries the database table "issues" to retrieve all posts and store in an array
      * composed of Issue objects (subclass of Post class)
