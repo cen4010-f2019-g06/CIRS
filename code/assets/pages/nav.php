@@ -58,6 +58,6 @@
                 <a href="/~cen4010fal19_g06/assets/pages/faq.php" class="menu-item">faq</a></li>
             <div class="horizontal-line"></div>
         </ul>
-        <a href="/~cen4010fal19_g06/assets/pages/signup.php" class="menu-item logout">Logout.</a>
+        <a href="/~cen4010fal19_g06/logoutUser.php" class="menu-item logout">Logout.</a>
     </div>
 </nav>

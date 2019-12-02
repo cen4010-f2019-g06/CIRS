@@ -208,11 +208,23 @@ class DBController
 
             return $issuePost;
         }
-        else
+    }
+
+    public function getLastIssueId()
+    {
+        $sql = "SELECT issueId
+                FROM issues
+                ORDER BY issueId DESC 
+                LIMIT 1";
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
         {
-            return false;
+            $row = $result->fetch();
+            return $row['issueId'];
         }
     }
+
 
     /*
     * Queries the database table "advice" to retrieve all posts and store in an array
@@ -413,6 +425,19 @@ class DBController
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_BOTH);
         return $result[0];
+    }
+
+    public function createCommentSection($postId, $postType)
+    {
+        $data = [
+            'postId'=>$postId,
+            'postType'=>$postType,
+        ];
+        $sql = "INSERT INTO commentSections (postId, postType)
+                VALUES (:postId, :postType)";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute($data);
     }
 
     public function getCommentSection($postId, $postType)

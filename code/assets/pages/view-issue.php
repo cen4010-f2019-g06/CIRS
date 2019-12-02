@@ -17,6 +17,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 </head>
 
 <body>
+<?php include ("/home/cen4010fal19_g06/public_html/assets/pages/nav.php"); ?>
 <header class="header-bar">
     <a href="index.php" class="logo">[cirs logo]</a>
     <img src="/~cen4010fal19_g06/assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
