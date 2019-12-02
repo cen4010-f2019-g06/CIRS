@@ -23,13 +23,7 @@
             height: 100px;
         }
         .today {
-            background: orange;
-        }
-        th:nth-of-type(1), td:nth-of-type(1) {
-            color: red;
-        }
-        th:nth-of-type(7), td:nth-of-type(7) {
-            color: blue;
+            background: AntiqueWhite;
         }
     </style>
 
@@ -84,6 +78,11 @@
     // Create Calendar
     $weeks = array();
     $week = '';
+    
+    //Creat array of events
+    $events = array();
+    
+
     // Add empty cell
     $week .= str_repeat('<td></td>', $str);
     for ( $day = 1; $day <= $day_count; $day++, $str++) {
@@ -91,9 +90,9 @@
         $date = $ym . '-' . $day;
         
         if ($today == $date) {
-            $week .= '<td class="today">' . $day;
+            $week .= '<td class="today">' . $day . '<br /><br />' . 'testing';
         } else {
-            $week .= '<td>' . $day; //this is where the events get inserted
+            $week .= '<td>' . $day . '<br /><br />' . 'testing'; //this is where the events get inserted
         }
         $week .= '</td>';
         

@@ -102,7 +102,7 @@ include_once 'DBConnection.php';
             <div class='advice-col-container'>
                 <div class="create-post__outer">
                     <div class="create-post__inner">
-                        <a href="assets/pages/create-post/issue-post.php" class="create-post">create post</a>
+                        <a href="assets/pages/issue-post.php" class="create-post">create post</a>
                     </div>
                 </div>
             <?php
