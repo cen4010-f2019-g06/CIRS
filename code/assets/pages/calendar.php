@@ -68,10 +68,6 @@ include_once ("/home/cen4010fal19_g06/public_html/DBConnection.php");
             $date = strtotime($element->getEventDate());
             $element->setEventDate($date);
         }
-        //Date ranges based on current month viewing
-        $startDate = strtotime($ym . "-01");
-        $endDate = $ym . "-" . $day_count . " 23:59:59";
-        $endDate = strtotime($endDate);
         
         // Add empty cell
         $week .= str_repeat('<td class="calendar-cell-row"></td>', $str);
@@ -82,19 +78,28 @@ include_once ("/home/cen4010fal19_g06/public_html/DBConnection.php");
             $dayEndTime = strtotime($date . " 23:59:59");
 
             $post1 = "";
+            $count = 0; //count for multiple posts in a day
+            $eventId = 0;
             foreach ($eventPostsArray as $element){
                 if ($element->getEventDate() >= $dayStartTime && $element->getEventDate() <= $dayEndTime){
                     $post1 = $element->getTitle();
+                    $count++;
+                    $eventId = $element->getPostId();
                 }
             }
+            //adds an ... to the date to show there are multiple events that day
+            if ($count > 1){
+                $post1 .= "<br /> ...";
+            }
+            
 
             if ($today == $date) {
-                $week .= '<td class="current-date calendar-cell-row">' . $day . '<br /><br />' . $post1;
+                $week .= "<td class='current-date calendar-cell-row'><a href='view-event.php?postId=" . $eventId . "'>" . $day . '<br /><br />' . $post1;
             } else {
-                $week .= '<td class="calendar-cell-row">' . $day . '<br /><br />' . $post1;
+                $week .= "<td class='calendar-cell-row'><a href='view-event.php?postId=" . $eventId . "'>" . $day . '<br /><br />' . $post1;
             }
             $week .= '</td>';
-
+            //<a href='assets/pages/view-advice.php?postId=" . $adviceId . "'>
             // End of the week OR End of the month
             if ($str % 7 == 6 || $day == $day_count) {
                 if ($day == $day_count) {
