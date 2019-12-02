@@ -44,21 +44,10 @@ include_once 'DBConnection.php';
             <button class="filter-option">
                 <img class="close-bttn" src="assets/images/buttons/close.svg">safety</button>
         </div>
-        <div class="create-post__outer">
-            <div class="create-post__inner">
-                <a href="assets/pages/issue-post.php" class="create-post">create post</a>
-            </div>
-        </div>
     </div>
 
     <div class="center-element">
         <div class="dash-post-container">
-            <!-- Left Page Nav -->
-            <div class="l-page-nav">
-                <button class="l-arrow">
-                    <img class="arrow-size" src="assets/images/buttons/next-page-left.svg">
-                </button>
-            </div>
 
             <!-- Post Grid -->
             <div class="grid">
@@ -84,7 +73,7 @@ include_once 'DBConnection.php';
                 			<img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
                 		</div>' .
                         '<div class="post-tile__body">
-                		<p>' . substr($issuePostsArray[$i]->getContent(), 0, 150) . ' . . .</p>
+                		<p>' . substr($issuePostsArray[$i]->getContent(), 0, 140) . ' . . .</p>
                 	</div>' .
                        '<footer>
                 		<div class="post-tile__date"><time>'. $issuePostsArray[$i]->getTime(). '</time>
@@ -95,16 +84,27 @@ include_once 'DBConnection.php';
                 </article>';
                 }
                 ?>
+				
+				<div class="center-element">
+					<div class="nav-tool">
+						<!-- Left Page Nav -->
+						<button class="l-arrow">
+							<img class="arrow-size" src="assets/images/buttons/next-page-left.svg"></button>
+						<input class="page-num-container" placeholder="1" disabled>
+						<!-- Right Page Nav -->
+						<button class="r-arrow">
+								<img class="arrow-size" src="assets/images/buttons/next-page-right.svg"></button>
+					</div>
+				</div>
             </div>
 
-            <!-- Right Page Nav -->
-            <div class="r-page-nav">
-                <button class="r-arrow">
-                    <img class="arrow-size" src="assets/images/buttons/next-page-right.svg">
-                </button>
-            </div>
-            <div class='advice-col-container'>
             <!-- Advice Column -->
+            <div class='advice-col-container'>
+                <div class="create-post__outer">
+                    <div class="create-post__inner">
+                        <a href="assets/pages/create-post/issue-post.php" class="create-post">create post</a>
+                    </div>
+                </div>
             <?php
             $advicePostsArray = $db->getAdvicePosts(); //get array of posts from DB using controller
 
@@ -128,8 +128,6 @@ include_once 'DBConnection.php';
                  }
             ?>
             </div>
-            <div class="clear-floats"></div>
-            <input class="page-num-container" placeholder="1" disabled>
         </div>
     </div>
 

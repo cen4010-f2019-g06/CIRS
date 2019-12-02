@@ -11,11 +11,11 @@
 <body class="admin-body">
     <?php include 'admin-nav.php'?>
     <header class="header-bar">
-        <a href="../../index.php" class="logo">[cirs logo]</a>
+        <a href="../../../index.php" class="logo">[cirs logo]</a>
         <img src="../images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
 
        <div class="search-bar">
-            <img  class="search-icon" src="../../images/icons/admin-search-icon.svg">
+            <img  class="search-icon" src="../images/icons/admin-search-icon.svg">
             <input class="admin__search" placeholder="Search">
         </div>
     </header>
@@ -26,17 +26,18 @@
         <thead>
             <tr>
                 <th class="post-col__small content-cell">Post No.</th>
-                <th class="post-col__medium content-cell">Status</th>
                 <th class="post-col__large content-cell">Content</th>
                 <th class="post-col__medium content-cell">Date</th>
+                <th class="post-col__small content-cell">Review Count</th>
+
             </tr>
         </thead>
         <tbody class="post-body">
             <tr class="post-row">
-                <td class="content-cell"><!-- post type var --></td>
-                <td><img class="status-cell" src="../images/icons/status/status-pending.svg"></td>
-                <td class="content-cell"><!-- post content var --></td>
-                <td class="content-cell"><time><!--  date var --></time></td>
+                <td class="content-cell">Issue</td>
+                <td class="content-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore...</td>
+                <td class="content-cell"><time>2019-10-30 15:23:56</time></td>
+                <td></td>
             </tr>
             
             
@@ -48,7 +49,7 @@
     </div>
 <!-- include google's jquery hosted library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../scripts/main.js"></script>
+<script src="../../scripts/main.js"></script>
 </body>
 
 </html>

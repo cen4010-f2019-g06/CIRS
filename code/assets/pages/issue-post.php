@@ -1,7 +1,4 @@
-<?php
-include 'checkLogin.php';
-include ("nav.php")
-?>
+<?php include ("nav.php")?>
 <!DOCTYPE html>
 <html lang="en">
 
