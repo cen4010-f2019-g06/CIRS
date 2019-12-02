@@ -1,6 +1,6 @@
 <?php 
 include ("nav.php");
-include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
+include_once ("/home/cen4010fal19_g06/public_html/DBConnection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,28 +62,36 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
         
         
         //Create array of events
+        //convert date using strtotime
         $eventPostsArray = $db->getEventPosts();
-        $eventsInRange = array_filter($eventPostsArray, 'filterDates');
-        function filterDates($element){
-            $date = strtotime($element->eventDate);
-            if ($date >= strtotime('2019-12-01') || strtotime('2019-12-31')){
-                return true;
-            }
-            else{
-                return false;
-            }
+        foreach ($eventPostsArray as $element){
+            $date = strtotime($element->getEventDate());
+            $element->setEventDate($date);
         }
+        //Date ranges based on current month viewing
+        $startDate = strtotime($ym . "-01");
+        $endDate = $ym . "-" . $day_count . " 23:59:59";
+        $endDate = strtotime($endDate);
         
         // Add empty cell
         $week .= str_repeat('<td class="calendar-cell-row"></td>', $str);
         for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
             $date = $ym . '-' . $day;
+            $dayStartTime = strtotime($date);
+            $dayEndTime = strtotime($date . " 23:59:59");
+
+            $post1 = "";
+            foreach ($eventPostsArray as $element){
+                if ($element->getEventDate() >= $dayStartTime && $element->getEventDate() <= $dayEndTime){
+                    $post1 = $element->getTitle();
+                }
+            }
 
             if ($today == $date) {
-                $week .= '<td class="current-date calendar-cell-row">' . $day;
+                $week .= '<td class="current-date calendar-cell-row">' . $day . '<br /><br />' . $post1;
             } else {
-                $week .= '<td class="calendar-cell-row">' . $day . '<br />' . 'test';
+                $week .= '<td class="calendar-cell-row">' . $day . '<br /><br />' . $post1;
             }
             $week .= '</td>';
 
