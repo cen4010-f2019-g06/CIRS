@@ -4,7 +4,7 @@ class Event extends Post
     private $location = "";
     private $eventDate = "";
     private $postedByUserId = "";
-    private $status = "";
+    private $status;
 
     public function getLocation()
     {

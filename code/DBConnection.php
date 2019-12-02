@@ -1,6 +1,6 @@
 <?php
 include 'Credentials.php';
-include 'DBController.php';
+include 'classes/DBController.php';
 
 try {
     //Establish connection to DB with controller

@@ -1,8 +1,7 @@
 <?php
-include'CommentSection.php';
 class Issue extends Post
 {
-    private $status = "";
+    private $status;
     private $adminReviews;
     private $postedByUserId = "";
 

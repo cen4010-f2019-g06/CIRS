@@ -12,7 +12,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
     <meta charset="utf-8">
     <link rel="stylesheet" href="/~cen4010fal19_g06/assets/stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
-    <title>Advice</title>
+    <title>Event</title>
     <!--php:echo $title-->
 </head>
 
@@ -37,21 +37,25 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 if(isset($_GET['postId']))
 {
     $postId = $_GET['postId'];
-    $advice = $db->getAdviceById($postId);
-    $content = $advice->getContent();
-    $title = $advice->getTitle();
-    $time = $advice->getTime();
+    $event = $db->getEventById($postId);
+    $content = $event->getContent();
+    $title = $event->getTitle();
+    $time = $event->getTime();
+    $eventDate = $event->getEventDate();
+    $location = $event->getLocation();
+
+    $statusIcon = $db->queryStatusIcon($event->getStatus());
 
     //Insert a new comment into DB
     if(isset($_POST['commentContent']))
     {
-        $commentSectionId = $db->queryCommentSectionId($postId, "advice");
+        $commentSectionId = $db->queryCommentSectionId($postId, "event");
         $comment = new Comment($_POST['commentContent'], $_SESSION['userId'], $commentSectionId);
         $db->insertComment($comment);
     }
 
     //Get comment section for the post
-    $commentSection = $db->getCommentSection($postId, "advice");
+    $commentSection = $db->getCommentSection($postId, "event");
     $commentCount = $commentSection->getCount();
 
     echo '
@@ -65,6 +69,7 @@ if(isset($_GET['postId']))
             <span id="watch-msg" style="font-size: 14px; color: var(--success-green); display: inline-block; float: left; visibility: hidden;">
                 You are now watching this post</span><br>
 
+        <img class="status-line" src=' . $statusIcon . '>
 
         <div class="tile-block">
             <h3>'. $title. '</h3>
@@ -82,6 +87,11 @@ if(isset($_GET['postId']))
             <div class="scroll-area">
                 <div class="post-content">
                     <p>' . $content . '</p>
+                </div>
+                <br>
+                <div class="post-content">
+                    <p>Event Date: ' . $eventDate . '</p> <br>
+                    <p>Event Location: ' . $location .' </p>
                 </div>
             </div>
             <div class="scrollbar-track">

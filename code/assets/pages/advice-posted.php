@@ -1,62 +1,19 @@
-<?php 
-include ("nav.php");
-include ("../../DBController.php");
-include ("../../Credentials.php");
-$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller;
-?>
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
+include '/home/cen4010fal19_g06/public_html/checkLogin.php';
 
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../stylesheets/main.css">
-    <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
-    <title>Advice Posted</title>
-    <!--php:echo $title-->
-</head>
-    
-<body>
-    <header class="header-bar">
-            <a href="../../index.php" class="logo">[cirs logo]</a>
-            <img src="../images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
+$advicePost = new Advice();
+$advicePost->setContent($_POST['content']);
+$advicePost->setPostedByUserId($_SESSION['userId']);
+$advicePost->setPostedByZNum($_SESSION['znumber']);
+$advicePost->setStatus(5);
+$advicePost->setTime(date("Y-m-d"));
+$advicePost->setWatchCount(0);
+$advicePost->setUserIcon("/~cen4010fal19_g06/assets/images/icons/default-user-icon.svg");
+$advicePost->setWatchId(1);
 
-            <div class="search-bar">
-                <img class="search-icon" src="../images/icons/search-icon.svg">
-                <input class="search" placeholder="Search">
-            </div>
-    </header>
-    <div class="horizontal-line"></div>
 
-    <p>Advice posted.</p>
-    <?php
-    
-        $advicePost = new Advice();
-        $advicePost->setContent($_POST['content']);
-        $advicePost->setPostedByUserId(6);
-        $advicePost->setPostedByZNum(23355639);
-        $advicePost->setStatus(5);
-        $advicePost->setTime(date("Y-m-d"));
-        $advicePost->setWatchCount(0);
-        $advicePost->setUserIcon("/~cen4010fal19_g06/assets/images/icons/default-user-icon.svg");
-        $advicePost->setWatchId(2);
-        $advicePost->setCommentCount(0);
+$db->insertAdvicePost($advicePost);
+$db->createCommentSection($db->getLastAdviceId(), "advice");
 
-        echo    "   <div class='advice-col-box'>
-                                        <img class='advice-icon' src='../images/icons/indicators/advice-indicator.svg'>
-                                        <div class='advice-col-body'>" . $advicePost->getContent() . "</div>
-                                        <footer>
-                                            <div class='advice-col__date'><time datetime='" . $advicePost->getTime() . "'>" . $advicePost->getTime() . "</time>
-                                            </div>
-                                            <div class='advice-col__comments'>(TODO:Comment count) comments<img class='comment-icon' src='../images/icons/comment-icon.svg'></div>
-                                        </footer>
-                                    </div>
-                                ";
-    
-        $db->insertAdvicePost($advicePost);
-    ?>
-
-    <!-- include google's jquery hosted library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../scripts/main.js"></script>
-</body>
-</html>
+header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/assets/pages/view-advice.php?postId=". $db->getLastAdviceId());

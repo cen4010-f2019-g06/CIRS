@@ -1,7 +1,6 @@
 <?php
-include 'DBController.php';
-include 'Credentials.php';
-$db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB with controller
+include 'checkLogin.php';
+include_once 'DBConnection.php';
 
 ?>
 
@@ -75,20 +74,24 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
                 {
                     $statusImage = $db->queryStatusIcon($issuePostsArray[$i]->getStatus()); //get path to status image
                     $watchIcon = $db->queryWatchIcon($issuePostsArray[$i]->getWatchId()); //get path to watch icon image
+                    $issueId = $issuePostsArray[$i]->getPostId();
 
-                    echo '<article class="column-1-fourth">' .
-                        	'<div class="post-tile__header">
+                    echo '<article class="column-1-fourth">
+
+                    <div class="post-tile__header">
+                        <a href="assets/pages/view-issue.php?postId=' . $issueId . '">
                 			<img class="post-tile__status" src=' . $statusImage . '>
                 			<img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
                 		</div>' .
                         '<div class="post-tile__body">
-                		<p>' . substr($issuePostsArray[$i]->getContent(), 1, 150) . ' . . .</p>
+                		<p>' . substr($issuePostsArray[$i]->getContent(), 0, 150) . ' . . .</p>
                 	</div>' .
                        '<footer>
                 		<div class="post-tile__date"><time>'. $issuePostsArray[$i]->getTime(). '</time>
                 		</div>
                 		<div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
                 	</footer>
+                	</a>
                 </article>';
                 }
                 ?>
@@ -103,21 +106,26 @@ $db = new DBController($DB_USER, $DB_PASSWORD); //Establish connection to DB wit
             <div class='advice-col-container'>
             <!-- Advice Column -->
             <?php
-                $advicePostsArray = $db->getAdvicePosts(); //get array of posts from DB using controller
+            $advicePostsArray = $db->getAdvicePosts(); //get array of posts from DB using controller
 
-                for($i=0; $i<5; $i++)
-                    {
-                        echo    "   <div class='advice-col-box'>
-                                        <img class='advice-icon' src='assets/images/icons/indicators/advice-indicator.svg'>
-                                        <div class='advice-col-body'>" . $advicePostsArray[$i]->getContent() . "</div>
-                                        <footer>
-                                            <div class='advice-col__date'><time datetime='" . $advicePostsArray[$i]->getTime() . "'>" . $advicePostsArray[$i]->getTime() . "</time>
-                                            </div>
-                                            <div class='advice-col__comments'>(count) comments<img class='comment-icon' src='assets/images/icons/comment-icon.svg'></div>
-                                        </footer>
-                                    </div>
-                                ";
-                     }
+            for($i=0; $i<5; $i++)
+                {
+                    $adviceId = $advicePostsArray[$i]->getPostId();
+                    $commentSection = $db->getCommentSection($adviceId, "advice");
+
+                    echo    "   <div class='advice-col-box'>
+                                <a href='assets/pages/view-advice.php?postId=" . $adviceId . "'>
+                                    <img class='advice-icon' src='assets/images/icons/indicators/advice-indicator.svg'>
+                                    <div class='advice-col-body'>" . $advicePostsArray[$i]->getContent() . "</div>
+                                    <footer>
+                                        <div class='advice-col__date'><time datetime='" . $advicePostsArray[$i]->getTime() . "'>" . $advicePostsArray[$i]->getTime() . "</time>
+                                        </div>
+                                        <div class='advice-col__comments'>" . $commentSection->getCount() . " comments<img class='comment-icon' src='assets/images/icons/comment-icon.svg'></div>
+                                    </footer>
+                                </a>
+                                </div>
+                            ";
+                 }
             ?>
             </div>
             <div class="clear-floats"></div>

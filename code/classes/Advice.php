@@ -3,7 +3,6 @@ class Advice extends Post
 {
     private $postedByUserId = "";
     private $status = "";
-    private $commentCount = "";
 
     public function getPostedByUserId()
     {
@@ -23,15 +22,5 @@ class Advice extends Post
     public function setStatus($status)
     {
         $this->status = $status;
-    }
-
-    public function getCommentCount()
-    {
-        return $this->commentCount;
-    }
-
-    public function setCommentCount($commentCount)
-    {
-        $this->commentCount = $commentCount;
     }
 }
