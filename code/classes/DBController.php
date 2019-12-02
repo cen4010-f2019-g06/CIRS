@@ -102,6 +102,25 @@ class DBController
         }
     }
 
+    public function getUserByZNumber($zNumber)
+    {
+        $sql = 'SELECT * 
+                FROM users 
+                WHERE zNumber ="'.$zNumber.'"';
+
+        $result = $this->connection->query($sql);
+        if($result->rowCount()>0)
+        {
+            $user = $result ->fetch();
+            return $user;
+        }
+        else
+        {
+            //No user with id in DB
+            return false;
+        }
+    }
+
     public function verifyAdmin($email, $password)
     {
         $sql = 'SELECT * 
@@ -183,35 +202,6 @@ class DBController
         return $issuePosts;
     }
 
-    public function searchIssuePosts($query)
-    {
-        $issuePosts = array();
-
-        $sql = 'SELECT issueId, title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum 
-                FROM issues
-                WHERE lower(content) like "%'. $query .'%"';
-
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-
-        foreach($stmt->fetchAll() as $row)
-        {
-            $issuePost = new Issue();
-            $issuePost->setPostId($row['issueId']);
-            $issuePost->setTitle($row['title']);
-            $issuePost->setContent($row['content']);
-            $issuePost->setPostedByZNum($row['postedByZNum']);
-            $issuePost->setTime($row['time']);
-            $issuePost->setWatchCount($row['watchCount']);
-            $issuePost->setStatus($row['status']);
-            $issuePost->setAdminReviews($row['adminReviews']);
-            $issuePost->setUserIcon($row['userIcon']);
-            $issuePost->setWatchId($row['watchId']);
-            array_push($issuePosts, $issuePost);
-        }
-        return $issuePosts;
-    }
-
     /*
     * Queries the database table "advice" to retrieve all posts and store in an array
     * composed of Advice objects (subclass of Post class)
@@ -254,6 +244,93 @@ class DBController
 
         $sql = "SELECT eventId, title, content, time, watchCount, userIcon, watchId, postedByZNum, location, eventDate 
                 FROM events";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        foreach($stmt->fetchAll() as $row)
+        {
+            $eventPost = new Event();
+            $eventPost->setPostId($row['eventId']);
+            $eventPost->setTitle($row['title']);
+            $eventPost->setContent($row['content']);
+            $eventPost->setPostedByZNum($row['postedByZNum']);
+            $eventPost->setTime($row['time']);
+            $eventPost->setWatchCount($row['watchCount']);
+            $eventPost->setUserIcon($row['userIcon']);
+            $eventPost->setWatchId($row['watchId']);
+            $eventPost->setLocation($row['location']);
+            $eventPost->setEventDate($row['eventDate']);
+
+            array_push($eventPosts, $eventPost);
+        }
+
+        return $eventPosts;
+    }
+
+    public function searchIssuePosts($query)
+    {
+        $issuePosts = array();
+
+        $sql = 'SELECT issueId, title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum 
+                FROM issues
+                WHERE lower(content) like "%'. $query .'%"';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        foreach($stmt->fetchAll() as $row)
+        {
+            $issuePost = new Issue();
+            $issuePost->setPostId($row['issueId']);
+            $issuePost->setTitle($row['title']);
+            $issuePost->setContent($row['content']);
+            $issuePost->setPostedByZNum($row['postedByZNum']);
+            $issuePost->setTime($row['time']);
+            $issuePost->setWatchCount($row['watchCount']);
+            $issuePost->setStatus($row['status']);
+            $issuePost->setAdminReviews($row['adminReviews']);
+            $issuePost->setUserIcon($row['userIcon']);
+            $issuePost->setWatchId($row['watchId']);
+            array_push($issuePosts, $issuePost);
+        }
+        return $issuePosts;
+    }
+
+    public function searchAdvicePosts($query)
+    {
+        $advicePosts = array();
+
+        $sql = 'SELECT * 
+                FROM advice
+                WHERE lower(content) like "%'. $query .'%"';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        foreach($stmt->fetchAll() as $row)
+        {
+            $advicePost = new Advice();
+            $advicePost->setPostId($row['adviceId']);
+            $advicePost->setTitle($row['title']);
+            $advicePost->setContent($row['content']);
+            $advicePost->setPostedByZNum($row['postedByZNum']);
+            $advicePost->setTime($row['time']);
+            $advicePost->setWatchCount($row['watchCount']);
+            $advicePost->setUserIcon($row['userIcon']);
+            $advicePost->setWatchId($row['watchId']);
+            array_push($advicePosts, $advicePost);
+        }
+
+        return $advicePosts;
+    }
+
+    public function searchEventPosts($query)
+    {
+        $eventPosts = array();
+
+        $sql = 'SELECT eventId, title, content, time, watchCount, userIcon, watchId, postedByZNum, location, eventDate 
+                FROM events
+                WHERE lower(content) like "%'. $query .'%"';
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
 
