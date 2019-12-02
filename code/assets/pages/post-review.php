@@ -14,10 +14,8 @@
         <a href="../../index.php" class="logo">[cirs logo]</a>
         <img src="../images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
 
-       <div class="search-bar">
-            <img  class="search-icon" src="../../images/icons/admin-search-icon.svg">
-            <input class="admin__search" placeholder="Search">
-        </div>
+        <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
+
     </header>
     <div class="admin__horizontal-line"></div>
     
