@@ -183,6 +183,35 @@ class DBController
         return $issuePosts;
     }
 
+    public function searchIssuePosts($query)
+    {
+        $issuePosts = array();
+
+        $sql = 'SELECT issueId, title, content, time, watchCount, status, adminReviews, userIcon, watchId, postedByZNum 
+                FROM issues
+                WHERE lower(content) like "%'. $query .'%"';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        foreach($stmt->fetchAll() as $row)
+        {
+            $issuePost = new Issue();
+            $issuePost->setPostId($row['issueId']);
+            $issuePost->setTitle($row['title']);
+            $issuePost->setContent($row['content']);
+            $issuePost->setPostedByZNum($row['postedByZNum']);
+            $issuePost->setTime($row['time']);
+            $issuePost->setWatchCount($row['watchCount']);
+            $issuePost->setStatus($row['status']);
+            $issuePost->setAdminReviews($row['adminReviews']);
+            $issuePost->setUserIcon($row['userIcon']);
+            $issuePost->setWatchId($row['watchId']);
+            array_push($issuePosts, $issuePost);
+        }
+        return $issuePosts;
+    }
+
     /*
     * Queries the database table "advice" to retrieve all posts and store in an array
     * composed of Advice objects (subclass of Post class)
