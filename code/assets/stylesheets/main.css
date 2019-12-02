@@ -417,7 +417,12 @@ td {
     display: inline-block;
 }
 
-
+.nav-tool {
+    width: 110px;
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+}
 
 .l-arrow {
     border: none;
@@ -427,10 +432,6 @@ td {
     float: left;
     cursor: pointer;
 }
-
-
-
-
 
 .r-arrow {
     border: none;
@@ -445,10 +446,6 @@ td {
     height: 25px;
     width: 15px;
 }
-
-
-
-
 
 .advice-icon {
     float: left;
@@ -491,6 +488,10 @@ td {
     border: solid 1px var(--faded-navy);
     background-color: white;
     cursor: not-allowed;
+}
+
+.page-num-container::placeholder {
+    color: var(--faded-navy);
 }
 
 /*
@@ -933,6 +934,22 @@ td {
     border: solid 1px var(--mocha);
 }
 
+th.post-col__small {
+    background-color: var(--mocha);
+}
+
+th.post-col__medium {
+    background-color: var(--mocha);
+}
+
+th.post-col__large {
+        background-color: var(--mocha);
+}
+
+th.calendar-col {
+    background-color: white;
+}
+
 #post-table {
     color: var(--burnt-mocha);
     width: 1100px;
@@ -1152,6 +1169,30 @@ textarea {
     padding-bottom: 10px;
     margin-top: -10px;
 }
+.current-date {
+    background-color: var(--faded-navy);
+}
+
+.calendar-nav {
+    width: 900px;
+    position: relative;
+    top: 40px;
+}
+
+.calendar-l-arrow {
+    border: none;
+    background: none;
+    float: right;
+    cursor: pointer;
+}
+
+.calendar-r-arrow {
+    border: none;
+    background: none;
+    float: right;
+    cursor: pointer;
+}
+
 
 .calendar-month__large {
     font-size: 38px;
@@ -1175,7 +1216,7 @@ textarea {
 
 .calendar-col__large {
     font-size: 26px;
-    text-align: right;
+    text-align: center;
     height: 30px;
     width: 125px;
     padding: 10px;
@@ -1210,6 +1251,10 @@ textarea {
     margin-top: 15px;
 }
 
+th.calendar-col__large {
+    background-color: var(--lighter-navy);
+}
+
 .post-content--event {
     border: solid var(--faded-navy) 1px;
     margin-top: 30px;
@@ -1241,7 +1286,7 @@ textarea {
 
 /*
 ++++++++++++++++++++++++++++++
-        My Account
+       My Account (User)
 ++++++++++++++++++++++++++++++
 */
 .account-area {
@@ -1327,333 +1372,31 @@ textarea {
     box-shadow: 3px 3px 10px var(--lighter-navy);
 }
 
+.account-not-subfield {
+    height: 120px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
 .notification-pref-opts {
     font-size: 14px;
 }
 
-/*
-++++++++++++++++++++++++++++++
-        View Posts
-++++++++++++++++++++++++++++++
-*/
-
-/* Issues */
-.user-container {
-    height: auto;
-    width: 10%;
-    margin-top: 75px;
-    margin-left: 75px;
-    display: inline-block;
-    float: left;
-}
-
-.icon {
-    width: 70%; 
-    float: left;
-}
-
-.main-post-container {
-    height: auto;
-    width: 50%;
-    margin-top: 30px;
-    display: inline-block;
-    float: left;
-}
-
-.status-line {
-    margin-top: 5px;
-    display: inline-block;
-    float: left;
-}
-
-.tile-block {
-    font-size: 35px;
-    line-height: 35px;
-    text-align: left;
-    height: 100px;
-    width: 100%;
-    margin-top: 15px;
-    display: inline-block;
-    float: left;
-}
-
-.scroll-container {
-    height: 370px;
-    width: 100%;
-    display: inline-block;
-    overflow: hidden;
-}
-
-.scroll-area {
-    height: 100%;
-    width: 85%;
-    position: relative;
-    float: left;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.post-content {
-    font-size: 25px;
-    line-height: 28px;
-    text-align: justify;
-    color: var(--faded-navy);
-    display: inline-block;
-}
-
-.scrollbar-track {
-    height: 100%;
-    width: 30px;
-    border: solid 1px var(--navy);
-    display: inline-block;
-    float: right;
-}
-
-.scrollbar-thumb {
-    height: 100px;
-    width: 30px;
-    margin-top: -5px;
-    margin-left: -1px;
-    background-color: var(--faded-navy);
-}
-
-.down-arrow {
-    width: 30px;
-    margin-top: -1px;
-    margin-left: -1px;
-}
-
-.up-arrow {
-    width: 30px;
-    margin-left: -1px;
-    position: relative;
-    top: 220px;
-}
-
-
-
-
-.scroll-area::-webkit-scrollbar {
-    display: none;
-}
-
-.indicators {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 40px;
-    display: inline-block;
-}
-
-.post-date {
-    font-size: 20px;
-    margin-left: 20px;
-    float: left;
-}
-
-.post-watch {
-    width: 30px;
-    margin-top: -7px;
-    margin-left: 20px;
-    float: left;
-}
-
-.post-flag {
-    width: 35px;
-    margin-top: -7px;
-    margin-right: 20px;
-    float: right;
-}
-
-.comment-container {
-    height: 550px;
-    width: 20%;
-    margin-top: 100px;
-    margin-right: 70px;
-    float: right;
-}
-
-.comment-box {
-    height: 80px;
-    width: 100%;
-    margin-top: -1px;
-    border: solid 1px var(--faded-navy);
-}
-
-.post-comment {
-    height: 40px;
-    width: 100%;
-    padding-left: 50px;
-    margin-bottom: 10px;
-    border: solid 1px var(--faded-navy);
-    border-radius: 20px;
-}
-
-.comment-header {
-    font-size: 22px;
-    text-align: left;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-.comment-user-icon {
-    position: relative;
-    left: 10px;
-    bottom: 45px;
-    float: left;
-}
-
-.comment-content {
-    font-size: 14px;
-    text-align: left;
-    margin: 5px 5px 0 10px;
-}
-
-.comment-date {
-    font-size: 12px;
-    color: var(--faded-navy);
-    margin-right: 10px;
-    float: right;
-}
-
-
-
-.post-comment:focus {
-    box-shadow: 6px 6px 10px var(--lighter-navy);
-}
-
-
-
-.post-tile__header {
-    height: 30px;
-}
-
-.comment-container__large {
-    height: 550px;
-    width: 90%;
-}
-
-.content-contain {
-    height: 30px;
-}
-
-.post-header {
-    height: 160px;
-    width: 100%;
-    display: inline-block;
-}
-
-.advice-post-indicator {
-    width: 60px;
-    margin-right: 15px;
-    float: left;
-}
-
-#post-cell {
-    height: 20px;
-}
-
-
-
-
-
-#post-row {
-    height: 25px;
-}
-
-.post-row {
-    height: 30px;
-}
-
-.status-cell {
-    width: 100px;
-    margin-top: 5px;
-    margin-left: 5px;
-}
-
-.content-cell {
-    text-align: center;
-    vertical-align: middle;
-}
-
-
-
-
-
-th.post-col__small {
-    background-color: var(--mocha);
-}
-
-th.post-col__medium {
-    background-color: var(--mocha);
-}
-
-th.post-col__large {
-        background-color: var(--mocha);
-}
-
-th.calendar-col {
-    background-color: white;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.page-num-container::placeholder {
-    color: var(--faded-navy);
-}
-
-
-
-.comment-content__small {
-    font-size: 12px;
-    text-align: left;
-    margin: 0 5px 0 10px;
-}
-
-.comment-user {
-    font-size: 12px;
-    text-align: left;
-    margin: 5px 5px 0 10px; 
-}
-
-.comment-box__small {
-    height: 100px;
-    width: 100%;
-    margin-top: -1px;
-    border: solid 1px var(--faded-navy);
-}
-
-
-input[type=checkbox] {
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-.dropdown {
-    font-family: Henriette;
-    font-size: 20px;
-    color: var(--faded-navy);
-    border-color: white;
-    background-color: white;
-}
-
-.account-post-table {
-    width: 350px;
+.not-opt {
+    font-size: 18px;
+    width: 150px;
 }
 
 input[type=checkbox] {
     background-color: white;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+input:checked + .slider {
+    background-color: var(--success-green);
 }
 
 .switch {
@@ -1696,10 +1439,6 @@ input[type=checkbox] {
     transition: .4s;
 }
 
-input:checked + .slider {
-    background-color: var(--success-green);
-}
-
 input:checked + .slider:before {
     -webkit-transform: translateX(22px);
         -ms-transform: translateX(22px);
@@ -1714,10 +1453,18 @@ input:checked + .slider:before {
     border-radius: 38%;
 }
 
-.not-opt {
-    font-size: 18px;
-    width: 150px;
+.dropdown {
+    font-family: Henriette;
+    font-size: 20px;
+    color: var(--faded-navy);
+    border-color: white;
+    background-color: white;
 }
+
+.account-post-table {
+    width: 350px;
+}
+
 
 .account-post-col__small {
     font-size: 16px;
@@ -1734,13 +1481,31 @@ input:checked + .slider:before {
     height: 25px;
     width: 275px;
 }
+/*
+++++++++++++++++++++++++++++++
+       My Account (Admin)
+++++++++++++++++++++++++++++++
+*/
+.admin-account-field {
+    font-size: 18px;
+    text-align: center;
+    color: var(--burnt-mocha);
+    height: 35px;
+    width: 350px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 45px;
+    border: solid var(--mocha) 1px;
+    border-radius: 20px;
+    background-color: var(--mocha);
+    float: right;
+    display: inline-block;
+    box-shadow: 3px 3px 10px var(--mocha);
+    cursor: default;
+}
 
-
-
-
-
-.account-not-subfield {
-    height: 120px;
+.admin-account-subfield {
+    height: 60px;
     width: 100%;
     padding: 5px;
     margin-bottom: 10px;
@@ -1808,37 +1573,270 @@ input:checked + .admin-slider:before {
     border-radius: 38%;
 }
 
-.admin-account-field {
-    font-size: 18px;
-    text-align: center;
-    color: var(--burnt-mocha);
-    height: 35px;
-    width: 350px;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 45px;
-    border: solid var(--mocha) 1px;
-    border-radius: 20px;
-    background-color: var(--mocha);
-    float: right;
+/*
+++++++++++++++++++++++++++++++
+        View Posts
+++++++++++++++++++++++++++++++
+*/
+
+/* Issues */
+.user-container {
+    height: auto;
+    width: 10%;
+    margin-top: 75px;
+    margin-left: 75px;
     display: inline-block;
-    box-shadow: 3px 3px 10px var(--mocha);
-    cursor: default;
+    float: left;
 }
 
+.icon {
+    width: 70%; 
+    float: left;
+}
 
+.advice-post-indicator {
+    width: 60px;
+    margin-right: 15px;
+    float: left;
+}
 
-.admin-account-subfield {
-    height: 60px;
+.main-post-container {
+    height: auto;
+    width: 50%;
+    margin-top: 30px;
+    display: inline-block;
+    float: left;
+}
+
+.status-line {
+    margin-top: 5px;
+    display: inline-block;
+    float: left;
+}
+
+.tile-block {
+    font-size: 35px;
+    line-height: 35px;
+    text-align: left;
+    height: 100px;
     width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    display: inline-block;
+    float: left;
+}
+
+.post-header {
+    height: 160px;
+    width: 100%;
     display: inline-block;
 }
 
-.nav-tool {
-    width: 110px;
-    margin-top: 10px;
+.scroll-container {
+    height: 370px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.scroll-area {
+    height: 100%;
+    width: 85%;
     position: relative;
+    float: left;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.post-content {
+    font-size: 25px;
+    line-height: 28px;
+    text-align: justify;
+    color: var(--faded-navy);
     display: inline-block;
 }
+
+.scrollbar-track {
+    height: 100%;
+    width: 30px;
+    border: solid 1px var(--navy);
+    display: inline-block;
+    float: right;
+}
+
+.scrollbar-thumb {
+    height: 100px;
+    width: 30px;
+    margin-top: -5px;
+    margin-left: -1px;
+    background-color: var(--faded-navy);
+}
+
+.down-arrow {
+    width: 30px;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.up-arrow {
+    width: 30px;
+    margin-left: -1px;
+    position: relative;
+    top: 220px;
+}
+
+.scroll-area::-webkit-scrollbar {
+    display: none;
+}
+
+.indicators {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+.post-date {
+    font-size: 20px;
+    margin-left: 20px;
+    float: left;
+}
+
+.post-watch {
+    width: 30px;
+    margin-top: -7px;
+    margin-left: 20px;
+    float: left;
+}
+
+.post-flag {
+    width: 35px;
+    margin-top: -7px;
+    margin-right: 20px;
+    float: right;
+}
+
+/*
+++++++++++++++++++++++++++++++
+     View Posts: Comments
+++++++++++++++++++++++++++++++
+*/
+.comment-container {
+    height: 550px;
+    width: 20%;
+    margin-top: 100px;
+    margin-right: 70px;
+    float: right;
+}
+
+.comment-box {
+    height: 80px;
+    width: 100%;
+    margin-top: -1px;
+    border: solid 1px var(--faded-navy);
+}
+
+.post-comment {
+    height: 40px;
+    width: 100%;
+    padding-left: 50px;
+    margin-bottom: 10px;
+    border: solid 1px var(--faded-navy);
+    border-radius: 20px;
+}
+
+.comment-header {
+    font-size: 22px;
+    text-align: left;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-user-icon {
+    position: relative;
+    left: 10px;
+    bottom: 45px;
+    float: left;
+}
+
+.comment-content {
+    font-size: 14px;
+    text-align: left;
+    margin: 5px 5px 0 10px;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: var(--faded-navy);
+    margin-right: 10px;
+    float: right;
+}
+
+.post-comment:focus {
+    box-shadow: 6px 6px 10px var(--lighter-navy);
+}
+
+.post-tile__header {
+    height: 30px;
+}
+.comment-user {
+    font-size: 12px;
+    text-align: left;
+    margin: 5px 5px 0 10px; 
+}
+
+.comment-container__large {
+    height: 550px;
+    width: 90%;
+}
+
+.content-contain {
+    height: 30px;
+}
+
+
+#post-cell {
+    height: 20px;
+}
+
+#post-row {
+    height: 25px;
+}
+
+.post-row {
+    height: 30px;
+}
+
+.status-cell {
+    width: 100px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.content-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.comment-content__small {
+    font-size: 12px;
+    text-align: left;
+    margin: 0 5px 0 10px;
+}
+
+.comment-box__small {
+    height: 100px;
+    width: 100%;
+    margin-top: -1px;
+    border: solid 1px var(--faded-navy);
+}
+
+
+
+
+
+
+
+
+
+
+

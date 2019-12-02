@@ -10,26 +10,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
     <link rel="stylesheet" href="../stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
     <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
-
     <title>Calendar</title>
-
-    <!--Calendar stuff-->
-    <style>
-        h3 {
-            margin-bottom: 30px;
-        }
-        th {
-            height: 30px;
-            text-align: center;
-        }
-        td {
-            height: 100px;
-        }
-        .today {
-            background: AntiqueWhite;
-        }
-    </style>
-
 </head>
     
 <body>
@@ -64,7 +45,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
         // Today
         $today = date('Y-m-j', time());
         // For H3 title
-        $html_title = date('Y / m', $timestamp);
+        $html_title = date('F Y', $timestamp);
         // Create prev & next month link
         $prev = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)-1, 1, date('Y', $timestamp)));
         $next = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)+1, 1, date('Y', $timestamp)));
@@ -82,14 +63,15 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
         
         //Create array of events
         $eventPostsArray = $db->getEventPosts();
-        function findEventsByDate($date)
-        {
-            foreach ( $eventPostsArray as $element ) {
-                if ($date == $element->eventDate) {
-                    return $element;
-                }
+        $eventsInRange = array_filter($eventPostsArray, 'filterDates');
+        function filterDates($element){
+            $date = strtotime($element->eventDate);
+            if ($date >= strtotime('2019-12-01') || strtotime('2019-12-31')){
+                return true;
             }
-            return false;
+            else{
+                return false;
+            }
         }
         
         // Add empty cell
@@ -99,9 +81,9 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
             $date = $ym . '-' . $day;
 
             if ($today == $date) {
-                $week .= '<td class="today">' . $day;
+                $week .= '<td class="current-date calendar-cell-row">' . $day;
             } else {
-                $week .= '<td class="calendar-cell-row">' . $day;
+                $week .= '<td class="calendar-cell-row">' . $day . '<br />' . 'test';
             }
             $week .= '</td>';
 
@@ -120,13 +102,12 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
     
         <div class="calendar center-element">        
                 <div class="calendar-nav center-element">
-                   
+                   <a href="?ym=<?php echo $next; ?>">
+                        	<button class="calendar-r-arrow">
+                            		<img class="arrow-size" src="../images/buttons/next-page-right.svg"></button></a>
                 	<a href="?ym=<?php echo $prev; ?>">
                         	<button class="calendar-l-arrow">
                             		<img class="arrow-size" src="../images/buttons/next-page-left.svg"></button></a>
- 			<a href="?ym=<?php echo $next; ?>">
-                        	<button class="calendar-r-arrow">
-                            		<img class="arrow-size" src="../images/buttons/next-page-right.svg"></button></a>
                 </div>
             <table class="calendar-container">
                 <caption class="calendar-month__large"><?php echo $html_title; ?></caption>
