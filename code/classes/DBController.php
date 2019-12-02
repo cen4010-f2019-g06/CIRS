@@ -183,49 +183,6 @@ class DBController
         return $issuePosts;
     }
 
-    public function getIssueById($id)
-    {
-        $sql = "SELECT * 
-                FROM issues
-                WHERE issueId = ". $id;
-        $result = $this->connection->query($sql);
-
-        if($result->rowCount()>0)
-        {
-            $row = $result->fetch();
-
-            $issuePost = new Issue();
-            $issuePost->setPostId($row['issueId']);
-            $issuePost->setTitle($row['title']);
-            $issuePost->setContent($row['content']);
-            $issuePost->setPostedByZNum($row['postedByZNum']);
-            $issuePost->setTime($row['time']);
-            $issuePost->setWatchCount($row['watchCount']);
-            $issuePost->setStatus($row['status']);
-            $issuePost->setAdminReviews($row['adminReviews']);
-            $issuePost->setUserIcon($row['userIcon']);
-            $issuePost->setWatchId($row['watchId']);
-
-            return $issuePost;
-        }
-    }
-
-    public function getLastIssueId()
-    {
-        $sql = "SELECT issueId
-                FROM issues
-                ORDER BY issueId DESC 
-                LIMIT 1";
-        $result = $this->connection->query($sql);
-
-        if($result->rowCount()>0)
-        {
-            $row = $result->fetch();
-            return $row['issueId'];
-        }
-    }
-
-
     /*
     * Queries the database table "advice" to retrieve all posts and store in an array
     * composed of Advice objects (subclass of Post class)
@@ -235,7 +192,7 @@ class DBController
     {
         $advicePosts = array();
 
-        $sql = "SELECT adviceId, title, content, time, watchCount, userIcon, watchId, postedByZNum 
+        $sql = "SELECT * 
                 FROM advice";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
@@ -291,6 +248,131 @@ class DBController
         return $eventPosts;
     }
 
+    public function getLastIssueId()
+    {
+        $sql = "SELECT issueId
+                FROM issues
+                ORDER BY issueId DESC 
+                LIMIT 1";
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+            return $row['issueId'];
+        }
+    }
+
+    public function getLastAdviceId()
+    {
+        $sql = "SELECT adviceId
+                FROM advice
+                ORDER BY adviceId DESC 
+                LIMIT 1";
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+            return $row['adviceId'];
+        }
+    }
+
+    public function getLastEventId()
+    {
+        $sql = "SELECT eventId
+                FROM events
+                ORDER BY eventId DESC 
+                LIMIT 1";
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+            return $row['eventId'];
+        }
+    }
+
+    public function getIssueById($id)
+    {
+        $sql = "SELECT * 
+                FROM issues
+                WHERE issueId = ". $id;
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+
+            $issuePost = new Issue();
+            $issuePost->setPostId($row['issueId']);
+            $issuePost->setTitle($row['title']);
+            $issuePost->setContent($row['content']);
+            $issuePost->setPostedByZNum($row['postedByZNum']);
+            $issuePost->setTime($row['time']);
+            $issuePost->setWatchCount($row['watchCount']);
+            $issuePost->setStatus($row['status']);
+            $issuePost->setAdminReviews($row['adminReviews']);
+            $issuePost->setUserIcon($row['userIcon']);
+            $issuePost->setWatchId($row['watchId']);
+
+            return $issuePost;
+        }
+    }
+
+    public function getAdviceById($id)
+    {
+        $sql = "SELECT * 
+                FROM advice
+                WHERE adviceId = ". $id;
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+
+            $advicePost = new Advice();
+            $advicePost->setPostId($row['adviceId']);
+            $advicePost->setTitle($row['title']);
+            $advicePost->setContent($row['content']);
+            $advicePost->setPostedByZNum($row['postedByZNum']);
+            $advicePost->setTime($row['time']);
+            $advicePost->setWatchCount($row['watchCount']);
+            $advicePost->setUserIcon($row['userIcon']);
+            $advicePost->setWatchId($row['watchId']);
+
+            return $advicePost;
+        }
+    }
+
+    public function getEventById($id)
+    {
+        $sql = "SELECT * 
+                FROM events
+                WHERE eventId = ". $id;
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+
+            $eventPost = new Event();
+            $eventPost->setPostId($row['eventId']);
+            $eventPost->setTitle($row['title']);
+            $eventPost->setContent($row['content']);
+            $eventPost->setPostedByZNum($row['postedByZNum']);
+            $eventPost->setTime($row['time']);
+            $eventPost->setWatchCount($row['watchCount']);
+            $eventPost->setUserIcon($row['userIcon']);
+            $eventPost->setWatchId($row['watchId']);
+            $eventPost->setLocation($row['location']);
+            $eventPost->setEventDate($row['eventDate']);
+            $eventPost->setStatus($row['status']);
+
+            return $eventPost;
+        }
+    }
+
     public function insertAdvicePost($advice)
     {
         $data = [
@@ -302,11 +384,10 @@ class DBController
             'time' => $advice->getTime(),
             'watchId' => $advice->getWatchId(),
             'watchCount' => $advice->getWatchCount(),
-            'commentCount' => $advice->getCommentCount(),
         ];
 
-        $sql = "INSERT INTO advice (postedByUserId, postedByZNum, status, content, userIcon, time, watchId, watchCount, commentCount)
-                    VALUES (:postedByUserId, :postedByZNum, :status, :content, :userIcon, :time, :watchId, :watchCount, :commentCount)";
+        $sql = "INSERT INTO advice (postedByUserId, postedByZNum, status, content, userIcon, time, watchId, watchCount)
+                    VALUES (:postedByUserId, :postedByZNum, :status, :content, :userIcon, :time, :watchId, :watchCount)";
         
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($data);

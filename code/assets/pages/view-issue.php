@@ -12,14 +12,14 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
     <meta charset="utf-8">
     <link rel="stylesheet" href="/~cen4010fal19_g06/assets/stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
-    <title>Support</title>
+    <title>Issue</title>
     <!--php:echo $title-->
 </head>
 
 <body>
 <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/nav.php"); ?>
 <header class="header-bar">
-    <a href="index.php" class="logo">[cirs logo]</a>
+    <a href="/~cen4010fal19_g06/index.php" class="logo">[cirs logo]</a>
     <img src="/~cen4010fal19_g06/assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 
     <div class="search-bar">
