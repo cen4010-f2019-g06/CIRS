@@ -14,8 +14,7 @@ class Comment
         $this->postedByUserId = $postedByUserId;
         $this->sectionId = $sectionId;
         //create new datetime
-        $this->time = new DateTime();
-        $this->time = $this->time->format('Y-m-d H:i:s');
+        $this->time = new DateTime("now");
     }
 
     public function getContent()
@@ -38,14 +37,19 @@ class Comment
         $this->postedByUserId = $postedByUserId;
     }
 
+    public function getTimeDB()
+    {
+        return $this->time->format('Y-m-d H:i:s');
+    }
+
     public function getTime()
     {
-        return $this->time;
+        return $this->time->format('h:i a m/d/Y');
     }
 
     public function setTime($time)
     {
-        $this->time = $time;
+        $this->time = new DateTime($time);
     }
 
     public function getUpvotes()

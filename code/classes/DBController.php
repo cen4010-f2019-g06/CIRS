@@ -83,6 +83,25 @@ class DBController
         }
     }
 
+    public function getUserById($id)
+    {
+        $sql = 'SELECT * 
+                FROM users 
+                WHERE userId ="'.$id.'"';
+
+        $result = $this->connection->query($sql);
+        if($result->rowCount()>0)
+        {
+            $user = $result ->fetch();
+            return $user;
+        }
+        else
+        {
+            //No user with id in DB
+            return false;
+        }
+    }
+
     public function verifyAdmin($email, $password)
     {
         $sql = 'SELECT * 
@@ -94,7 +113,6 @@ class DBController
         if($result->rowCount()>0)
         {
             $admin = $result ->fetch();
-            echo "at least 1 db query result";
 
             if(password_verify($password, $admin['password']))
             {
@@ -163,6 +181,37 @@ class DBController
         }
 
         return $issuePosts;
+    }
+
+    public function getIssueById($id)
+    {
+        $sql = "SELECT * 
+                FROM issues
+                WHERE issueId = ". $id;
+        $result = $this->connection->query($sql);
+
+        if($result->rowCount()>0)
+        {
+            $row = $result->fetch();
+
+            $issuePost = new Issue();
+            $issuePost->setPostId($row['issueId']);
+            $issuePost->setTitle($row['title']);
+            $issuePost->setContent($row['content']);
+            $issuePost->setPostedByZNum($row['postedByZNum']);
+            $issuePost->setTime($row['time']);
+            $issuePost->setWatchCount($row['watchCount']);
+            $issuePost->setStatus($row['status']);
+            $issuePost->setAdminReviews($row['adminReviews']);
+            $issuePost->setUserIcon($row['userIcon']);
+            $issuePost->setWatchId($row['watchId']);
+
+            return $issuePost;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /*
@@ -341,7 +390,7 @@ class DBController
         $data = [
             'content'=>$comment->getContent(),
             'postedByUserId'=>$comment->getPostedByUserId(),
-            'time'=>$comment->getTime(),
+            'time'=>$comment->getTimeDB(),
             'upvotes'=>$comment->getUpvotes(),
             'downvotes'=>$comment->getDownvotes(),
             'sectionId'=>$comment->getSectionId(),
@@ -386,6 +435,7 @@ class DBController
             $comment->setDownvotes($row['downvotes']);
 
             $commentSection->addComment($comment);
+            $commentSection->incrementCount();
         }
 
         return $commentSection;

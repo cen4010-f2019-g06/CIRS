@@ -74,9 +74,12 @@ include_once 'DBConnection.php';
                 {
                     $statusImage = $db->queryStatusIcon($issuePostsArray[$i]->getStatus()); //get path to status image
                     $watchIcon = $db->queryWatchIcon($issuePostsArray[$i]->getWatchId()); //get path to watch icon image
+                    $issueId = $issuePostsArray[$i]->getPostId();
 
-                    echo '<article class="column-1-fourth">' .
-                        	'<div class="post-tile__header">
+                    echo '<article class="column-1-fourth">
+
+                    <div class="post-tile__header">
+                        <a href="assets/pages/view-issue.php?postId=' . $issueId . '">
                 			<img class="post-tile__status" src=' . $statusImage . '>
                 			<img src="assets/images/icons/default-user-icon.svg" class="user-avatar">
                 		</div>' .
@@ -88,6 +91,7 @@ include_once 'DBConnection.php';
                 		</div>
                 		<div class="post-tile__watching"><img src='. $watchIcon .'>'. $issuePostsArray[$i]->getWatchCount().'</div>
                 	</footer>
+                	</a>
                 </article>';
                 }
                 ?>

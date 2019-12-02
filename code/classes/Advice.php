@@ -3,7 +3,7 @@ class Advice extends Post
 {
     private $postedByUserId = "";
     private $status = "";
-    private $commentCount = "";
+    private $commentCount;
 
     public function getPostedByUserId()
     {

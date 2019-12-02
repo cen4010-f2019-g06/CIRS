@@ -14,6 +14,7 @@ class Post
     //methods
     //getters and setters
 
+
     public function getPostId()
     {
         return $this->postId;
