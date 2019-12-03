@@ -548,7 +548,8 @@ input {
 }
 
 .logo {
-    color: var(--navy);
+    height: 60px;
+    width: 120px;
 }
 
 .user-avatar {
@@ -586,6 +587,7 @@ input {
     margin-top: 10px;
     border: solid var(--faded-navy) 1px;
     background-color: white;
+    display: block;
     float: right;
     cursor: pointer;
 }
@@ -816,6 +818,7 @@ input {
 }
 
 .admin-body {
+    color: var(--burnt-mocha);
     background-color: var(--light-mocha);
 }
 
@@ -1170,7 +1173,7 @@ textarea {
     margin-top: -10px;
 }
 .current-date {
-    background-color: var(--faded-navy);
+    background-color: var(--blush);
 }
 
 .calendar-nav {
@@ -1840,3 +1843,181 @@ input:checked + .admin-slider:before {
 
 
 
+
+.search-grid {
+    text-align: left;
+    width: 75%;
+    padding: 10px;
+}
+
+.search-item-header {
+    height: 35px;
+    width: 100%;
+    
+}
+
+.search-user-icon {
+    width: 30px;
+    float: left;
+}
+
+.search-user {
+    font-size: 20px;
+    text-align: left;
+    margin: 5px 5px 0 35px;
+    position: relative;
+    top: 10px;
+}
+
+.search-item-body {
+    font-size: 16px;
+    line-height: 18px;
+    text-align: left;
+    width: 100%;
+    padding: 10px 20px;
+    
+}
+
+.search-item-footer {
+    width: 100%;
+}
+
+.search-item-date {
+    font-size: 14px;
+    color: var(--faded-navy);
+    margin-left: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.search-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.search-item-watch {
+    margin-right: 20px;
+    float: right;
+}
+
+.search-nav-tool {
+    width: 110px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    position: fixed;
+    bottom: 80px ;
+    display: inline-block;
+}
+
+.search-filter {
+    font-size: 18px;
+    margin: 10px;
+    display: block;
+    float: left;
+    clear: both;
+}
+
+.search-post-container {
+    height: auto;
+    width: 45%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+.search-filter-item {
+    padding: 5px;
+}
+
+.search-result-header {
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: block;
+    float: left;
+}
+
+.admin-post-content--issue {
+    height: 400px;
+    width: 100%;
+    color: var(--burnt-mocha);
+
+    border: solid var(--mocha) 1px;
+    background-color: var(--light-mocha);
+
+    display: inline-block;
+}
+
+.admin-post-field {
+    font-size: 18px;
+    text-align: center;
+    color: var(--burnt-mocha);
+    height: 35px;
+    width: 70%;
+    padding: var(--input-field-pad);
+    border: solid var(--mocha) 1px;
+    border-radius: 20px;
+    background-color: var(--mocha);
+    box-shadow: 3px 3px 10px var(--mocha);
+    display: inline-block;
+    float: left;
+    cursor: default;
+}
+
+.admin-post-description-container {
+    height: 140px;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.admin-post-field-label {
+    font-size: 18px;
+    text-align: right;
+    width: 20%;
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 30px;
+    display: inline-block;
+    float: right;
+}
+
+.admin-post-info {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.admin-post__status {
+    height: 20px;
+    width: 80px;
+    margin-bottom: -5px;
+    display: inline-block; 
+}
+
+.dropdown {
+    font-family: Henriette;
+    font-size: 20px;
+    color: var(--faded-navy);
+    border-color: white;
+    background-color: white;
+}
+
+.admin-review-sel {
+    float: right;
+}
+
+.admin__submit-bttn {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark-mocha);
+    margin-bottom: 20px;
+    height: 30px;
+    width: 140px;
+    border: solid var(--mocha) 1px;
+    border-radius: 20px;
+    background-color: var(--light-mocha);
+    float: right;
+    cursor: pointer;
+}

@@ -11,12 +11,12 @@
                 <a href="post-review.php" class="admin__menu-item">post review</a></li>
             <div class="admin__horizontal-line"></div>
             <li>
-                <a href="../admin/flag-review.html" class="admin__menu-item">flag review</a></li>
+                <a href="flag-review.php" class="admin__menu-item">flag review</a></li>
             <div class="admin__horizontal-line"></div>
             <li>
-                <a href="../menu-links/" class="admin__menu-item">my account</a></li>
+                <a href="admin-account.php" class="admin__menu-item">my account</a></li>
             <div class="admin__horizontal-line"></div>
         </ul>
-        <a href="../login-protocol/admin-login.html" class=" admin-logout">Logout.</a>
+        <a href="/~cen4010fal19_g06/logoutUser.php" class=" admin-logout">Logout.</a>
     </div>
 </nav>

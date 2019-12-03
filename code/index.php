@@ -18,7 +18,7 @@ include_once 'DBConnection.php';
 	<?php include ("assets/pages/nav.php"); ?>
     <!-- Header Bar-->
     <header class="header-bar">
-        <a href="index.php" class="logo">[cirs logo]</a>
+        <a href="index.php"><img class="logo" src="assets/images/icons/logo-user.png"></a>
 
         <img src="assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 

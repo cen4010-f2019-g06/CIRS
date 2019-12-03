@@ -7,7 +7,7 @@ $issuePost->setTitle($_POST['title']);
 $issuePost->setContent($_POST['content']);
 $issuePost->setPostedByUserId($_SESSION['userId']);
 $issuePost->setPostedByZNum($_SESSION['znumber']);
-$issuePost->setStatus(1);
+$issuePost->setStatus(0);
 $issuePost->setTime(date("Y-m-d"));
 $issuePost->setWatchCount(0);
 $issuePost->setUserIcon("/~cen4010fal19_g06/assets/images/icons/default-user-icon.svg");

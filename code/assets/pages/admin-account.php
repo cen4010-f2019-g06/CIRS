@@ -10,8 +10,9 @@
 </head>
     
 <body class="admin-body">
+<?php include 'admin-nav.php'?>
     <header class="header-bar">
-        <a href="../../index.php" class="logo">[cirs logo]</a>
+        <a href="../../index.html"><img class="logo" src="../images/icons/logo-admin.png"></a>
         <img src="../images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
 
         <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
@@ -69,7 +70,8 @@
                 </fieldset>
             </div>
     </div>
-    
+    <!-- include google's jquery hosted library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../scripts/main.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 <body>
 <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/nav.php"); ?>
 <header class="header-bar">
-    <a href="/~cen4010fal19_g06/index.php" class="logo">[cirs logo]</a>
+    <a href="../../index.html"><img class="logo" src="../images/icons/logo-user.png"></a>
     <img src="/~cen4010fal19_g06/assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 
     <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
