@@ -22,7 +22,7 @@
 
 <body>
     <header class="header-bar">
-        <a href="../../index.html"><img class="logo" src="../images/icons/logo-user.png"></a>
+        <a href="../../index.php"><img class="logo" src="../images/icons/logo-user.png"></a>
         <img src="../images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
 
         <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
