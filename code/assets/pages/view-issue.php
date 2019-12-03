@@ -29,9 +29,26 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 <body>
 
 <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/nav.php"); ?>
-<header class="header-bar">
-    <a href="../../index.php"><img class="logo" src="../images/icons/logo-user.png"></a>
-    <img src="/~cen4010fal19_g06/assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
+<?php
+if(isset($_SESSION['adminId']))
+{
+    include ("/home/cen4010fal19_g06/public_html/assets/pages/admin-nav.php");
+    echo'
+        <header class="header-bar">
+            <a href="/~cen4010fal19_g06/index.php"><img class="logo" src="/~cen4010fal19_g06/assets/images/icons/logo-admin.png"></a>
+            <img src="/~cen4010fal19_g06/assets/images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
+        ';
+}
+else
+{
+    include ("/home/cen4010fal19_g06/public_html/assets/pages/nav.php");
+    echo'
+    <header class="header-bar">
+        <a href="/~cen4010fal19_g06/index.php"><img class="logo" src="/~cen4010fal19_g06/assets/images/icons/logo-user.png"></a>
+        <img src="/~cen4010fal19_g06/assets/images/buttons/menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openNav()">
+        ';
+}
+?>
 
     <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
 
@@ -39,8 +56,6 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 <div class="horizontal-line"></div>
 
 <?php
-
-
 //postId must be set in the URL querystring
 //for example: http://lamp.cse.fau.edu/~cen4010fal19_g06/viewPostTest.php?postId=5
 //$_GET['postId']=5

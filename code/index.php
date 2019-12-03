@@ -26,7 +26,6 @@ include_once 'DBConnection.php';
 </head>
 
 <body>
-
 	<?php
     if(isset($_SESSION['adminId']))
     {
