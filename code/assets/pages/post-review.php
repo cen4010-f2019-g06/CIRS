@@ -19,22 +19,12 @@ if(!isset($_SESSION['adminId']))
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
     <title>Post Review</title>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153783349-1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-153783349-1');
-    </script>
-
 </head>
     
 <body class="admin-body">
     <?php include 'admin-nav.php'?>
     <header class="header-bar">
-        <a href="../../index.html"><img class="logo" src="../images/icons/logo-admin.png"></a>
+        <a href="../../index.php" class="logo">[cirs logo]</a>
         <img src="../images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
 
         <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
@@ -75,12 +65,7 @@ if(!isset($_SESSION['adminId']))
         }
 
         ?>
-            <tr class="post-row">
-                <td class="content-cell"><!-- post type var --></td>
-                <td><img class="status-cell" src="../images/icons/status/status-pending.svg"></td>
-                <td class="content-cell"><!-- post content var --></td>
-                <td class="content-cell"><time><!--  date var --></time></td>
-            </tr>
+
         </tbody>
 
     </table>

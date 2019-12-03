@@ -40,6 +40,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 
 <?php
 
+
 //postId must be set in the URL querystring
 //for example: http://lamp.cse.fau.edu/~cen4010fal19_g06/viewPostTest.php?postId=5
 //$_GET['postId']=5

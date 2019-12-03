@@ -30,6 +30,7 @@ if(!isset($_SESSION['adminId']))
     gtag('config', 'UA-153783349-1');
     </script>
 
+
 </head>
     
 <body class="admin-body">
@@ -50,6 +51,13 @@ if(!isset($_SESSION['adminId']))
             if(isset($_GET['postId']))
             {
                 $postId = $_GET['postId'];
+
+
+                if(isset($_POST['status']))
+                {
+                    $db->updateStatus($postId, $_POST['status']);
+                }
+
                 $issue = $db->getIssueById($postId);
                 $content = $issue->getContent();
                 $title = $issue->getTitle();
@@ -87,11 +95,6 @@ if(!isset($_SESSION['adminId']))
             </form>
             </div>
             ';
-
-            if(isset($_POST['status']))
-            {
-                echo $_POST['status'];
-            }
             ?>
             
 
@@ -99,7 +102,7 @@ if(!isset($_SESSION['adminId']))
     </div>
     
     <!-- include google's jquery hosted library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../../scripts/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../scripts/main.js"></script>
 </body>
 </html>
