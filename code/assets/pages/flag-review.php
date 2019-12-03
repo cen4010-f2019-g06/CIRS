@@ -46,8 +46,9 @@
     <input class="admin-page-num" placeholder="1">
     </div>
 <!-- include google's jquery hosted library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../../scripts/main.js"></script>
+    <!-- include google's jquery hosted library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../scripts/main.js"></script>
 </body>
 
 </html>

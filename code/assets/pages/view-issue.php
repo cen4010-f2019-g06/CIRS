@@ -17,6 +17,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 </head>
 
 <body>
+
 <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/nav.php"); ?>
 <header class="header-bar">
     <a href="/~cen4010fal19_g06/index.php" class="logo">[cirs logo]</a>
@@ -28,6 +29,7 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
 <div class="horizontal-line"></div>
 
 <?php
+
 
 //postId must be set in the URL querystring
 //for example: http://lamp.cse.fau.edu/~cen4010fal19_g06/viewPostTest.php?postId=5

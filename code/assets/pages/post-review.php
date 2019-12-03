@@ -1,3 +1,15 @@
+<?php
+
+include '/home/cen4010fal19_g06/public_html/checkLogin.php';
+include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
+
+if(!isset($_SESSION['adminId']))
+{
+    header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +18,7 @@
     <link rel="stylesheet" href="../stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
     <title>Post Review</title>
+
 </head>
     
 <body class="admin-body">
@@ -27,17 +40,37 @@
                 <th class="post-col__medium content-cell">Status</th>
                 <th class="post-col__large content-cell">Content</th>
                 <th class="post-col__medium content-cell">Date</th>
+                <th class="post-col__small content-cell">Review Issue</th>
             </tr>
         </thead>
         <tbody class="post-body">
+        <?php
+
+        $issuePostsArray = $db->getIssuePosts();
+
+        foreach($issuePostsArray as $issue)
+        {
+            $statusImage = $db->queryStatusIcon($issue->getStatus()); //get path to status image
+            echo'
+
+            <tr class="post-row">
+                <td class="content-cell">' . $issue->getPostId() . '</td>
+                <td><img class="status-cell" src='. $statusImage . '> </td>
+                <td class="content-cell">' . $issue->getContent() . '</td>
+                <td class="content-cell"><time>' . $issue->getTime() . '</time></td>
+                <td class="content-cell"><a href="admin-view-post.php?postId='. $issue->getPostId() . '">Review</a></td>
+            </tr>
+            
+            ';
+        }
+
+        ?>
             <tr class="post-row">
                 <td class="content-cell"><!-- post type var --></td>
                 <td><img class="status-cell" src="../images/icons/status/status-pending.svg"></td>
                 <td class="content-cell"><!-- post content var --></td>
                 <td class="content-cell"><time><!--  date var --></time></td>
             </tr>
-            
-            
         </tbody>
 
     </table>

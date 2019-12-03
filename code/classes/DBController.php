@@ -652,4 +652,15 @@ class DBController
 
         return $commentSection;
     }
+
+    public function updateStatus($postId, $status)
+    {
+        $sql = 'UPDATE issues
+                SET status=' . $status.'
+                WHERE issueId='. $postId;
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+    }
+
 }
