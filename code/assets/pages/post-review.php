@@ -24,7 +24,6 @@ if(!isset($_SESSION['adminId']))
 <body class="admin-body">
     <?php include 'admin-nav.php'?>
     <header class="header-bar">
-
         <a href="../../index.php"><img class="logo" src="../images/icons/logo-admin.png"></a>
         <img src="../images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
 

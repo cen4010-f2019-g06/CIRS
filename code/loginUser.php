@@ -24,6 +24,6 @@ if(!empty($_POST))
     }
     else
     {
-        //TODO redirect to login page with error
+        header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/");
     }
 }

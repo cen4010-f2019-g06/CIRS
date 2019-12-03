@@ -16,9 +16,12 @@ if(!empty($_POST))
         $_SESSION['adminId'] = $admin['adminId'];
         $_SESSION['username'] = $admin['username'];
 
-
         header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/assets/pages/post-review.php");
         exit();
+    }
+    else
+    {
+        header("Location: http://lamp.cse.fau.edu/~cen4010fal19_g06/assets/pages/admin-login.php");
     }
 
 }
