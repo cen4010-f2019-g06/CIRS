@@ -13,7 +13,17 @@ include_once '/home/cen4010fal19_g06/public_html/DBConnection.php';
     <link rel="stylesheet" href="/~cen4010fal19_g06/assets/stylesheets/main.css">
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
     <title>Issue</title>
-    <!--php:echo $title-->
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153783349-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153783349-1');
+    </script>
+
 </head>
 
 <body>

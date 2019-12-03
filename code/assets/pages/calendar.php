@@ -11,6 +11,17 @@ include_once ("/home/cen4010fal19_g06/public_html/DBConnection.php");
     <link rel="stylesheet" href="https://use.typekit.net/xkf2xga.css">
     <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
     <title>Calendar</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153783349-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-153783349-1');
+    </script>
+
 </head>
     
 <body>
