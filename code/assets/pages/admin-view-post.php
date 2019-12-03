@@ -36,7 +36,7 @@ if(!isset($_SESSION['adminId']))
 <body class="admin-body">
 <?php include 'admin-nav.php'?>
     <header class="header-bar">
-        <a href="../../index.php" class="logo">[cirs logo]</a>
+        <a href="../../index.php" class="logo"><img class="logo" src="/~cen4010fal19_g06/assets/images/icons/logo-admin.png"></a>
         <img src="../images/buttons/admin-menu-collapsed.svg" class="menu-bttn" id="menu-closed" onclick="openAdminNav()">
 
         <?php include ("/home/cen4010fal19_g06/public_html/assets/pages/searchbar.php"); ?>
